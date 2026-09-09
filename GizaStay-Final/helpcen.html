@@ -1,708 +1,257 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-    />
-    <link href="css/helpcen.css" rel="stylesheet" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="css/helpcen.css" rel="stylesheet">
     <title>Help Center</title>
-  </head>
-  <body>
+</head>
+<body>
     <section class="help center7">
-    <style>
-      @media (min-width: 992px) {
-        .nav-search-box {
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
-        }
-      }
-    </style>
-    <nav class="navbar bg-white border-bottom shadow-sm py-3 sticky-top">
-      <div
-        class="container-fluid px-4 d-flex align-items-center gap-3 flex-wrap position-relative"
+        <!-- navbar -->
+        <nav class="navbar bg-white border-bottom">
+  <div class="container-fluid px-5">
+
+    <a href="#" class="navbar-brand fw-bold fs-3 text-primary">
+      Giza<span class="text-warning">Stay</span>
+    </a>
+
+    <div class="d-flex align-items-center gap-4">
+
+      <a href="#" class="text-decoration-none text-primary small d-flex align-items-center gap-1">
+        <img
+          src="https://flagcdn.com/w20/us.png"
+          width="16"
+          alt="USA"
+        >
+        USD
+      </a>
+
+      <a href="#" class="text-primary">
+        <i class="bi bi-headset"></i>
+      </a>
+
+      <img
+        src="https://i.pravatar.cc/100?img=47"
+        class="rounded-circle"
+        width="30"
+        height="30"
+        alt="Profile"
       >
-        <a
-          href="index.html"
-          class="navbar-brand fw-bold fs-3 text-primary order-1 me-0"
-          >Giza<span class="text-warning">Stay</span></a
-        >
 
-        <div
-          class="nav-search-box d-flex align-items-center bg-white border rounded-4 p-1 shadow-sm w-100 mx-auto order-3 order-lg-2 flex-lg-grow-1"
-          style="max-width: 580px"
-        >
-          <div
-            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill border-end"
-          >
-            <input
-              type="text"
-              id="navDest"
-              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
-              placeholder="Anywhere"
-              readonly
-            />
-          </div>
-          <div
-            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill border-end"
-          >
-            <input
-              type="text"
-              id="navDates"
-              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
-              placeholder="Any week"
-              readonly
-            />
-          </div>
-          <div
-            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill"
-          >
-            <input
-              type="text"
-              id="navGuests"
-              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
-              placeholder="Add guests"
-              readonly
-            />
-          </div>
-          <button
-            type="button"
-            class="btn btn-primary rounded-3 d-flex align-items-center justify-content-center flex-shrink-0 ms-1"
-            style="width: 38px; height: 38px"
-            data-bs-toggle="modal"
-            data-bs-target="#navSearchModal"
-          >
-            <i class="bi bi-search"></i>
-          </button>
-        </div>
-
-        <div class="d-flex align-items-center gap-3 order-2 ms-auto order-lg-3">
-          <span class="small"
-            ><img src="https://flagcdn.com/w20/us.png" width="16" alt="USA" />
-            USD</span
-          >
-          <a href="helpcen.html" class="text-primary"
-            ><i class="bi bi-headset"></i
-          ></a>
-          <a href="profile.html" class="profile-link"
-            ><img
-              src="https://i.pravatar.cc/100?img=47"
-              width="32"
-              height="32"
-              class="rounded-circle"
-          /></a>
-        </div>
-      </div>
-    </nav>
-
-    <div
-      class="modal fade"
-      id="navSearchModal"
-      tabindex="-1"
-      aria-labelledby="navSearchModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="navSearchModalLabel">
-              Search stays
-            </h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <label class="form-label fw-semibold" for="mDest"
-              >Destination</label
-            >
-            <input
-              type="text"
-              id="mDest"
-              class="form-control mb-1"
-              placeholder="e.g. Cairo, Barcelona, Nice"
-            />
-            <div id="mDestError" class="text-danger small mb-2 d-none">
-              Please enter a destination.
-            </div>
-            <label class="form-label fw-semibold" for="mCheckin"
-              >Check in</label
-            >
-            <input type="date" id="mCheckin" class="form-control mb-3" />
-            <label class="form-label fw-semibold" for="mCheckout"
-              >Check out</label
-            >
-            <input type="date" id="mCheckout" class="form-control mb-2" />
-            <div id="mDatesError" class="text-danger small mb-2 d-none">
-              Check-out date must be after check-in date.
-            </div>
-            <label class="form-label fw-semibold" for="mGuests">Guests</label>
-            <select id="mGuests" class="form-select">
-              <option value="1">1 guest</option>
-              <option value="2" selected>2 guests</option>
-              <option value="3">3 guests</option>
-              <option value="4">4+ guests</option>
-            </select>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button
-              type="button"
-              class="btn btn-primary"
-              id="searchApply"
-            >
-              Search
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
 
-<div class="container">
-        <div class="help-center">
-          <h1>Help Center</h1>
-          <h2>Hi, Traveler</h2>
+  </div>
+</nav>
+<!-- ////////////////////////////////////////////////// -->
+ <!-- ///////////////////////////////////////////////// -->
+      <div class="container">
+            <div class="help-center">
+             <h1>
+                Help Center
+             </h1>
+             <h2>Hi, Traveler</h2>
+             <div class="ask input">
+<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Ask">
+<datalist id="datalistOptions">
+  <option value="Stays">
+  <option value="Loyalty & Rewards">
+  <option value="Security">
+  <option value="Things to do">
+  <option value="Refunds & Charges">
+     <option value="Account">
+      <option value="Privacy">
+         <option value="Travel Alerts">
+      </option>
+</datalist>
+                <button class="button" id="searchBtn">
+                    <i class="bi bi-search"></i>
+                    search
+                </button>
+             </div>
+            </div>
+            <div class="Explore-articles">
+  <h2>Explore help articles</h2>
+  <div class="help-grid">
+    <a href="#" class="help-item">
+      <span class="icon">
+        <i class="bi bi-house-door"></i></span>
+      <span class="label">Stays</span>
+      <span class="arrow"><i class="bi bi-chevron-right"></i></span>
+    </a>
+    <a href="#" class="help-item">
+      <span class="icon"><i class="bi bi-trophy-fill"></i></span>
+      <span class="label">Loyalty & Rewards</span>
+       <span class="arrow"><i class="bi bi-chevron-right"></i></span>
+    </a>
+  <a href="#" class="help-item">
+      <span class="icon"><i class="bi bi-shield-lock"></i></span>
+      <span class="label">Security</span>
+       <span class="arrow"><i class="bi bi-chevron-right"></i></span>
+    </a>
+ <a href="#" class="help-item">
+      <span class="icon"><i class="bi bi-stars"></i></span>
+      <span class="label">Things to do</span>
+       <span class="arrow"><i class="bi bi-chevron-right"></i></span>
+    </a>
+     <a href="#" class="help-item">
+      <span class="icon"><i class="bi bi-credit-card"></i></span>
+      <span class="label">Refunds & Charges</span>
+       <span class="arrow"><i class="bi bi-chevron-right"></i></span>
+     </a>
+     <a href="account.html" class="help-item">
+      <span class="icon"><i class="bi bi-person"></i></span>
+      <span class="label">Account</span>
+       <span class="arrow"><i class="bi bi-chevron-right"></i></span>
+    </a>
+  <a href="#" class="help-item">
+      <span class="icon"><i class="bi bi-lock"></i></span>
+      <span class="label">Privacy</span>
+       <span class="arrow"><i class="bi bi-chevron-right"></i></span>
+    </a>
+    <a href="#" class="help-item">
+      <span class="icon"><i class="bi bi-exclamation-triangle-fill"></i></span>
+      <span class="label">Travel Alerts</span>
+       <span class="arrow"><i class="bi bi-chevron-right"></i></span>
+    </a>
+  </div>
+</div>
         </div>
-        <div class="Explore-articles">
-          <h2>Explore help articles</h2>
-          <div class="help-grid">
-            <details class="help-topic" name="help-topic">
-              <summary class="help-item">
-                <span class="icon"><i class="bi bi-house-door"></i></span>
-                <span class="label">Stays</span>
-                <span class="arrow"><i class="bi bi-chevron-right"></i></span>
-              </summary>
-              <div class="help-topic-body">
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>How do I book a stay?</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      Search a destination on the home page, open a property,
-                      choose your dates and guests, then select Reserve. You
-                      confirm guest details and pay to finish.
-                    </p>
-                  </div>
-                </details>
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>Can I change or cancel a booking?</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      Open Profile then Trips, select the booking and choose
-                      Cancel Booking. Whether cancellation is free depends on the
-                      property policy shown at checkout.
-                    </p>
-                  </div>
-                </details>
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>When am I charged?</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      Payment is taken at the payment step. Some stays offer
-                      paying part now and part later; the amounts and dates are
-                      shown before you confirm.
-                    </p>
-                  </div>
-                </details>
-              </div>
-            </details>
-
-            <details class="help-topic" name="help-topic">
-              <summary class="help-item">
-                <span class="icon"><i class="bi bi-trophy-fill"></i></span>
-                <span class="label">Loyalty & Rewards</span>
-                <span class="arrow"><i class="bi bi-chevron-right"></i></span>
-              </summary>
-              <div class="help-topic-body">
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>How do I earn rewards?</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      You earn points automatically on completed stays booked
-                      while signed in to your account.
-                    </p>
-                  </div>
-                </details>
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>Do my points expire?</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      Points stay valid for 24 months from your most recent
-                      completed booking.
-                    </p>
-                  </div>
-                </details>
-              </div>
-            </details>
-
-            <details class="help-topic" name="help-topic">
-              <summary class="help-item">
-                <span class="icon"><i class="bi bi-shield-lock"></i></span>
-                <span class="label">Security</span>
-                <span class="arrow"><i class="bi bi-chevron-right"></i></span>
-              </summary>
-              <div class="help-topic-body">
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>How do I keep my account secure?</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      Use an email address you control and never share your
-                      verification code. GizaStay will never ask for that code by
-                      phone or email.
-                    </p>
-                  </div>
-                </details>
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>I received a login code I did not request</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      You can ignore it; the code cannot be used by anyone else.
-                      Sign in and review your recent activity in your profile.
-                    </p>
-                  </div>
-                </details>
-              </div>
-            </details>
-
-            <details class="help-topic" name="help-topic">
-              <summary class="help-item">
-                <span class="icon"><i class="bi bi-stars"></i></span>
-                <span class="label">Things to do</span>
-                <span class="arrow"><i class="bi bi-chevron-right"></i></span>
-              </summary>
-              <div class="help-topic-body">
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>Can I book activities through GizaStay?</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      Activities listed on a property page are informational in
-                      this version. Arrange them with the property after
-                      check-in.
-                    </p>
-                  </div>
-                </details>
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>Are activity prices per person?</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      Yes, activity prices are shown per person unless the
-                      listing states otherwise.
-                    </p>
-                  </div>
-                </details>
-              </div>
-            </details>
-
-            <details class="help-topic" name="help-topic">
-              <summary class="help-item">
-                <span class="icon"><i class="bi bi-credit-card"></i></span>
-                <span class="label">Refunds & Charges</span>
-                <span class="arrow"><i class="bi bi-chevron-right"></i></span>
-              </summary>
-              <div class="help-topic-body">
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>How long does a refund take?</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      Approved refunds are returned to your original payment
-                      method within 5 to 10 business days.
-                    </p>
-                  </div>
-                </details>
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>Why was I charged a service fee?</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      The GizaStay service fee covers support and secure payment.
-                      It is always shown in the price breakdown before you pay.
-                    </p>
-                  </div>
-                </details>
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>I see a charge I do not recognise</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      Check Profile then Trips for the matching booking, then
-                      contact support with the reservation code.
-                    </p>
-                  </div>
-                </details>
-              </div>
-            </details>
-
-            <details class="help-topic" name="help-topic">
-              <summary class="help-item">
-                <span class="icon"><i class="bi bi-person"></i></span>
-                <span class="label">Account</span>
-                <span class="arrow"><i class="bi bi-chevron-right"></i></span>
-              </summary>
-              <div class="help-topic-body">
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>How do I update my details?</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      Go to Profile then Personal Data, edit your name, phone,
-                      address or photo, and select Save changes.
-                    </p>
-                  </div>
-                </details>
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>How do I delete my account?</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      Profile then Settings then Delete account removes your
-                      local data from this device.
-                    </p>
-                  </div>
-                </details>
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>International travel documents</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      Passports, visas, ESTA, ETA and rules for travelling with
-                      minors are covered in the full article.
-                    </p>
-                    <a class="help-faq-link" href="Interna.html"
-                      >Read the full article</a
-                    >
-                  </div>
-                </details>
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>See all account articles</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      Open the full list of account help articles.
-                    </p>
-                    <a class="help-faq-link" href="account.html"
-                      >Read the full article</a
-                    >
-                  </div>
-                </details>
-              </div>
-            </details>
-
-            <details class="help-topic" name="help-topic">
-              <summary class="help-item">
-                <span class="icon"><i class="bi bi-lock"></i></span>
-                <span class="label">Privacy</span>
-                <span class="arrow"><i class="bi bi-chevron-right"></i></span>
-              </summary>
-              <div class="help-topic-body">
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>What data does GizaStay store?</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      In this project your login state, profile details, wishlist
-                      and bookings are stored only in your browser using
-                      localStorage.
-                    </p>
-                  </div>
-                </details>
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>How do I clear my data?</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      Log out to clear session data, or use Profile then Settings
-                      then Delete account to remove everything.
-                    </p>
-                  </div>
-                </details>
-              </div>
-            </details>
-
-            <details class="help-topic" name="help-topic">
-              <summary class="help-item">
-                <span class="icon"
-                  ><i class="bi bi-exclamation-triangle-fill"></i
-                ></span>
-                <span class="label">Travel Alerts</span>
-                <span class="arrow"><i class="bi bi-chevron-right"></i></span>
-              </summary>
-              <div class="help-topic-body">
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>Where do I see travel alerts?</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      Important destination notices appear on the property page
-                      and again before checkout.
-                    </p>
-                  </div>
-                </details>
-                <details class="help-faq">
-                  <summary class="help-faq-q">
-                    <span>Do alerts affect my cancellation options?</span>
-                    <i class="bi bi-plus-lg icon-closed"></i>
-                    <i class="bi bi-dash-lg icon-open"></i>
-                  </summary>
-                  <div class="help-faq-a">
-                    <p class="mb-2">
-                      If an official travel alert affects your dates, contact
-                      support with your reservation code to review the options.
-                    </p>
-                  </div>
-                </details>
-              </div>
-            </details>
-          </div>
-        </div>
-      </div>
     </section>
-        <footer class="bg-dark text-white mt-5">
-      <div class="container-fluid px-5 py-4">
+    <!-- footer -->
+<!-- ////////////////////////////////////////////////// -->
+ <!-- ///////////////////////////////////////////////// -->
+    <footer class="bg-dark text-white mt-5">
+    <div class="container-fluid px-5 py-4">
         <div class="row g-4">
-          <div class="col-lg-4">
-            <h5 class="fw-bold">Giza<span class="text-warning">Stay</span></h5>
 
-            <p class="small">
-              We help you find and book the perfect stay from cozy guesthouses
-              to top hotels—with ease, trust, and the best deals.
-            </p>
+            <div class="col-lg-4">
+                <h5 class="fw-bold">
+                    Giza<span class="text-warning">Stay</span>
+                </h5>
 
-            <h6 class="text-primary">Download Our App</h6>
+                <p class="small">
+                    We help you find and book the perfect stay
+                    from cozy guesthouses to top hotels—with
+                    ease, trust, and the best deals.
+                </p>
 
-            <div class="d-flex gap-2">
-              <a href="#" class="btn btn-secondary btn-sm">
-                <i class="bi bi-apple"></i>
-                App Store
-              </a>
+                <h6 class="text-primary">Download Our App</h6>
 
-              <a href="#" class="btn btn-secondary btn-sm">
-                <i class="bi bi-google-play"></i>
-                Google Play
-              </a>
+                <div class="d-flex gap-2">
+                    <a href="#" class="btn btn-secondary btn-sm">
+                        <i class="bi bi-apple"></i>
+                        App Store
+                    </a>
+
+                    <a href="#" class="btn btn-secondary btn-sm">
+                        <i class="bi bi-google-play"></i>
+                        Google Play
+                    </a>
+                </div>
             </div>
-          </div>
 
-          <div class="col-6 col-lg-2">
-            <h6 class="text-primary">Explore</h6>
+            <div class="col-6 col-lg-2">
+                <h6 class="text-primary">Explore</h6>
 
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Trending Destinations</a
-            >
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Summer Hotspots</a
-            >
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Winter Getaways</a
-            >
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Weekend Deals</a
-            >
-            <a href="#" class="d-block text-white text-decoration-none small"
-              >Family-Friendly Stays</a
-            >
-          </div>
-
-          <div class="col-6 col-lg-2">
-            <h6 class="text-primary">Property Types</h6>
-
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Hotels</a
-            >
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Apartments</a
-            >
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Villas</a
-            >
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Cabins</a
-            >
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Glamping</a
-            >
-            <a href="#" class="d-block text-white text-decoration-none small"
-              >Domes</a
-            >
-          </div>
-
-          <div class="col-6 col-lg-2">
-            <h6 class="text-primary">Support</h6>
-
-            <a
-              href="helpcen.html"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Help Centre</a
-            >
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Live Chat Support</a
-            >
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >FAQs</a
-            >
-            <a href="#" class="d-block text-white text-decoration-none small"
-              >Contact Us</a
-            >
-          </div>
-
-          <div class="col-6 col-lg-2">
-            <h6 class="text-primary">Get In Touch</h6>
-
-            <p class="small mb-2">+20 123 456 7890</p>
-            <p class="small">support@gizastay.com</p>
-
-            <div class="d-flex gap-3">
-              <a href="#" class="text-white">
-                <i class="bi bi-facebook"></i>
-              </a>
-
-              <a href="#" class="text-white">
-                <i class="bi bi-instagram"></i>
-              </a>
-
-              <a href="#" class="text-white">
-                <i class="bi bi-youtube"></i>
-              </a>
-
-              <a href="#" class="text-white">
-                <i class="bi bi-twitter"></i>
-              </a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Trending Destinations</a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Summer Hotspots</a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Winter Getaways</a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Weekend Deals</a>
+                <a href="#" class="d-block text-white text-decoration-none small">Family-Friendly Stays</a>
             </div>
-          </div>
+
+            <div class="col-6 col-lg-2">
+                <h6 class="text-primary">Property Types</h6>
+
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Hotels</a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Apartments</a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Villas</a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Cabins</a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Glamping</a>
+                <a href="#" class="d-block text-white text-decoration-none small">Domes</a>
+            </div>
+
+            <div class="col-6 col-lg-2">
+                <h6 class="text-primary">Support</h6>
+
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Help Centre</a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Live Chat Support</a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">FAQs</a>
+                <a href="#" class="d-block text-white text-decoration-none small">Contact Us</a>
+            </div>
+
+            <div class="col-6 col-lg-2">
+                <h6 class="text-primary">Get In Touch</h6>
+
+                <p class="small mb-2">+20 123 456 7890</p>
+                <p class="small">support@gizastay.com</p>
+
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-white">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="#" class="text-white">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                    <a href="#" class="text-white">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+
+                    <a href="#" class="text-white">
+                        <i class="bi bi-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
         </div>
-      </div>
+    </div>
 
-      <div class="border-top border-secondary py-3">
+    <div class="border-top border-secondary py-3">
         <div class="container-fluid px-5">
-          <div
-            class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3"
-          >
-            <small> © 2025 GizaStay. All rights reserved. </small>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
 
-            <div class="d-flex gap-2">
-              <span class="badge bg-light text-dark">VISA</span>
-              <span class="badge bg-light text-dark">AMEX</span>
-              <span class="badge bg-light text-dark">MC</span>
-              <span class="badge bg-light text-dark">Stripe</span>
-              <span class="badge bg-light text-dark">PayPal</span>
-              <span class="badge bg-light text-dark">G Pay</span>
+                <small>
+                    © 2025 GizaStay. All rights reserved.
+                </small>
+
+                <div class="d-flex gap-2">
+                    <span class="badge bg-light text-dark">VISA</span>
+                    <span class="badge bg-light text-dark">AMEX</span>
+                    <span class="badge bg-light text-dark">MC</span>
+                    <span class="badge bg-light text-dark">Stripe</span>
+                    <span class="badge bg-light text-dark">PayPal</span>
+                    <span class="badge bg-light text-dark">G Pay</span>
+                </div>
+
             </div>
-          </div>
         </div>
-      </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
-    <script src="js/app.js"></script>
-  </body>
+    </div>
+</footer>
+<!-- java -->
+<script>
+  var searchBtn = document.getElementById('searchBtn');
+var searchInput = document.getElementById('exampleDataList');
+
+function goSearch() {
+    var query = searchInput.value.trim();
+
+    if (query.length === 0) return;
+
+    window.location.href = 'account.html?search=' + encodeURIComponent(query);
+}
+
+searchBtn.addEventListener('click', function () {
+    goSearch();
+});
+</script>
+</body>
 </html>

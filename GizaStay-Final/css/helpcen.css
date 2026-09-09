@@ -1,6 +1,95 @@
+/* ===== Shared navbar / footer spacing on small screens ===== */
+@media (max-width: 575.98px) {
+  .help.center7 .navbar .container-fluid.px-5,
+  footer .container-fluid.px-5 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .help.center7 .navbar .d-flex.gap-4 {
+    gap: 1rem !important;
+  }
+}
+
+/* ===== Help Center layout ===== */
+.help.center7 .container {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.help-center {
+  margin-bottom: 40px;
+}
+
+.help-center h1 {
+  font-size: 32px;
+  font-weight: 600;
+  font-style: initial;
+  line-height: normal;
+  color: black;
+}
+
+.help-center h2 {
+  font-size: 24px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: initial;
+  color: #1a1a2e;
+  margin-top: 8px;
+}
+
+/* ===== Search box ===== */
+.ask.input {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  width: 100%;
+  max-width: 640px;
+  margin-top: 15px;
+}
+
+.ask.input .form-control {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.button {
+  border-radius: 6px;
+  border: none;
+  background-color: #4169f1;
+  font-size: 17px;
+  color: #f5f2f2;
+  transition: 0.3s;
+}
+
+.ask.input .button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  padding: 10px 20px;
+}
+
+button:hover {
+  background-color: rgb(8, 8, 8);
+  color: white;
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 0 20px rgba(7, 0, 0, 0.4);
+}
+
+/* ===== Explore articles grid ===== */
+.Explore-articles h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 16px;
+}
+
 .help-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px 40px;
 }
 
@@ -13,184 +102,78 @@
   border-radius: 8px;
   text-decoration: none;
   color: #1a1a2e;
+  transition: 0.3s;
+}
+
+.help-item .icon {
+  font-size: 20px;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.help-item .label {
+  flex: 1;
 }
 
 .help-item .arrow {
   margin-left: auto;
-}
-.help-center h1 {
-  font-size: 32px;
-  font-weight: 600;
-  font-style: initial;
-  line-height: normal;
-  color: black;
-}
-.help-center h2 {
-  font-size: 24px;
-  font-weight: 600;
-  font-style: normal;
-  line-height: initial;
-  color: #1a1a2e;
-}
-.button {
-  border-radius: 6px;
-  border: none;
-  background-color: #4169f1;
-  font-size: 17px;
-  color: #f5f2f2;
-  transition: 0.3s;
-}
-button:hover {
-  background-color: rgb(8, 8, 8);
-  color: white;
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 0 20px rgba(7, 0, 0, 0.4);
-}
-.ask.input {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  margin-top: 15px;
+  flex-shrink: 0;
 }
 
-.ask.input .form-control {
-  flex: 1;
-  padding: 10px 15px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.ask.input .button {
-  white-space: nowrap;
-  padding: 10px 20px;
-  height: fit-content;
-}
 .help-item:hover {
   box-shadow: 5px 5px 10px rgb(0, 89, 255);
   transition: 0.3s;
 }
 
-.help-panel {
-  margin-top: 8px;
-}
-.help-panel-title {
-  font-size: 20px;
-  font-weight: 600;
-  color: #1a1a2e;
-  margin: 10px 0 16px;
-}
-.help-back {
-  border: none;
-  background: none;
-  color: #0d6efd;
-  font-weight: 600;
-  padding: 6px 0;
-  cursor: pointer;
-}
-.help-back:hover {
-  background: none;
-  color: #0d6efd;
-  transform: none;
-  box-shadow: none;
-  text-decoration: underline;
-}
-.help-faq {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  overflow: hidden;
-}
-.help-faq-q {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  background: #fff;
-  border: none;
-  padding: 14px 16px;
-  font-size: 15px;
-  font-weight: 500;
-  color: #1a1a2e;
-  text-align: left;
-  cursor: pointer;
-  transition: none;
-}
-.help-faq-q:hover {
-  background: #f4f6ff;
-  color: #1a1a2e;
-  transform: none;
-  box-shadow: none;
-}
-.help-faq-a {
-  padding: 0 16px 14px;
-  color: #444;
-  font-size: 14px;
-  line-height: 1.6;
-}
-.help-faq-link {
-  font-weight: 600;
-}
-.help-answer {
-  grid-column: 1 / -1;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 14px 16px;
-  margin-top: -6px;
-  background: #fafbff;
-  color: #444;
-  font-size: 14px;
-  line-height: 1.6;
+/* ===== Tablet / medium screens ===== */
+@media (max-width: 991.98px) {
+  .help-center h1 {
+    font-size: 28px;
+  }
+
+  .help-center h2,
+  .Explore-articles h2 {
+    font-size: 22px;
+  }
+
+  .help-grid {
+    gap: 14px 20px;
+  }
 }
 
-/* Pure-HTML topic accordion (no JS) */
-.help-topic {
-  align-self: start;
-}
-.help-topic[open] {
-  grid-column: 1 / -1;
-}
-.help-topic > summary.help-item {
-  cursor: pointer;
-  list-style: none;
-}
-.help-topic > summary.help-item::-webkit-details-marker {
-  display: none;
-}
-.help-topic[open] > summary.help-item {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.help-topic > summary .arrow {
-  transition: transform 0.3s;
-}
-.help-topic[open] > summary .arrow {
-  transform: rotate(90deg);
-}
-.help-topic-body {
-  border: 1px solid #e0e0e0;
-  border-top: none;
-  border-radius: 0 0 8px 8px;
-  padding: 14px 16px 4px;
-}
-.help-topic-body .help-faq:last-child {
-  margin-bottom: 10px;
-}
+/* ===== Mobile screens ===== */
+@media (max-width: 575.98px) {
+  .help.center7 .container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 
-/* FAQ item is a <details> now */
-.help-faq > summary.help-faq-q {
-  list-style: none;
-}
-.help-faq > summary.help-faq-q::-webkit-details-marker {
-  display: none;
-}
-.help-faq .icon-open {
-  display: none;
-}
-.help-faq[open] .icon-closed {
-  display: none;
-}
-.help-faq[open] .icon-open {
-  display: inline;
+  .help-center h1 {
+    font-size: 24px;
+  }
+
+  .help-center h2,
+  .Explore-articles h2 {
+    font-size: 20px;
+  }
+
+  .ask.input {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ask.input .button {
+    justify-content: center;
+    width: 100%;
+    padding: 12px 20px;
+  }
+
+  .help-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .help-item {
+    padding: 14px;
+  }
 }

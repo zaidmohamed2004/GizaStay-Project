@@ -1,10 +1,10 @@
 .help-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px 40px;
-  position: relative;
-  left: -38px;
-  bottom: -3px;
+ display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 40px;
+    position: relative;
+    left: -38px;
+    bottom: -3px;
 }
 
 .help-item {
@@ -21,70 +21,32 @@
 .help-item .arrow {
   margin-left: auto;
 }
-.everything h1 {
-  font-size: 32px;
-  line-height: 42px;
-  font-weight: 600;
-  position: relative;
-  top: 3px;
-  left: -39px;
+.everything h1{
+    font-size: 32px;
+    line-height: 42px;
+    font-weight: 600;
+    position: relative;
+    top: 3px;
+    left: -39px;
 }
-.everything h3 {
+.everything h3{
   font-size: 21px;
-  line-height: 32px;
-  font-weight: 600;
-  color: #1a1a2e;
-  position: relative;
-  bottom: -4px;
-  left: -42px;
+    line-height: 32px;
+    font-weight: 600;
+    color: #1a1a2e;
+    position: relative;
+    bottom: -4px;
+    left: -42px;
 }
-.everything i {
-  font-size: 18px;
-  position: relative;
-  top: 0px;
-  color: #0d6efd;
-  left: -1px;
+.everything i{
+    font-size: 18px;
+    position: relative;
+    top: 0px;
+    color: #0d6efd;
+    left: -1px;
 }
-.help-item:hover {
-  box-shadow: 5px 5px 10px rgb(0, 89, 255);
-  transition: 0.3s;
-}
+.help-item:hover{
+      box-shadow: 5px 5px 10px rgb(0, 89, 255);
+       transition: 0.3s;
 
-/* Pure-HTML article accordion (no JS) */
-.help-article {
-  align-self: start;
-  padding: 0;
-}
-.help-article[open] {
-  grid-column: 1 / -1;
-}
-.help-article > summary.help-article-q {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px;
-  cursor: pointer;
-  list-style: none;
-  color: #1a1a2e;
-}
-.help-article > summary.help-article-q::-webkit-details-marker {
-  display: none;
-}
-.help-article > summary .arrow {
-  margin-left: auto;
-  transition: transform 0.3s;
-}
-.help-article[open] > summary .arrow {
-  transform: rotate(90deg);
-}
-.help-article .help-answer {
-  border: none;
-  border-top: 1px solid #e0e0e0;
-  border-radius: 0;
-  margin: 0;
-  padding: 14px 16px;
-  background: #fafbff;
-  color: #444;
-  font-size: 14px;
-  line-height: 1.6;
 }

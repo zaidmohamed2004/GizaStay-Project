@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>International travel documents</title>
       <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -14,180 +14,69 @@
 </head>
 <body>
     <section id="Interna.html" class="International page">
-    <style>
-      @media (min-width: 992px) {
-        .nav-search-box {
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
-        }
-      }
-    </style>
-    <nav class="navbar bg-white border-bottom shadow-sm py-3 sticky-top">
-      <div
-        class="container-fluid px-4 d-flex align-items-center gap-3 flex-wrap position-relative"
+         <!-- /////////////////////////////////// -->
+           <!-- /////////////////////////////////// -->
+<nav class="navbar bg-white border-bottom">
+  <div class="container-fluid px-5">
+
+    <a href="#" class="navbar-brand fw-bold fs-3 text-primary">
+      Giza<span class="text-warning">Stay</span>
+    </a>
+
+    <div class="d-flex align-items-center gap-4">
+
+      <a href="#" class="text-decoration-none text-primary small d-flex align-items-center gap-1">
+        <img
+          src="https://flagcdn.com/w20/us.png"
+          width="16"
+          alt="USA"
+        >
+        USD
+      </a>
+
+      <a href="#" class="text-primary">
+        <i class="bi bi-headset"></i>
+      </a>
+
+      <img
+        src="https://i.pravatar.cc/100?img=47"
+        class="rounded-circle"
+        width="30"
+        height="30"
+        alt="Profile"
       >
-        <a
-          href="index.html"
-          class="navbar-brand fw-bold fs-3 text-primary order-1 me-0"
-          >Giza<span class="text-warning">Stay</span></a
-        >
 
-        <div
-          class="nav-search-box d-flex align-items-center bg-white border rounded-4 p-1 shadow-sm w-100 mx-auto order-3 order-lg-2 flex-lg-grow-1"
-          style="max-width: 580px"
-        >
-          <div
-            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill border-end"
-          >
-            <input
-              type="text"
-              id="navDest"
-              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
-              placeholder="Anywhere"
-              readonly
-            />
-          </div>
-          <div
-            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill border-end"
-          >
-            <input
-              type="text"
-              id="navDates"
-              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
-              placeholder="Any week"
-              readonly
-            />
-          </div>
-          <div
-            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill"
-          >
-            <input
-              type="text"
-              id="navGuests"
-              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
-              placeholder="Add guests"
-              readonly
-            />
-          </div>
-          <button
-            type="button"
-            class="btn btn-primary rounded-3 d-flex align-items-center justify-content-center flex-shrink-0 ms-1"
-            style="width: 38px; height: 38px"
-            data-bs-toggle="modal"
-            data-bs-target="#navSearchModal"
-          >
-            <i class="bi bi-search"></i>
-          </button>
-        </div>
-
-        <div class="d-flex align-items-center gap-3 order-2 ms-auto order-lg-3">
-          <span class="small"
-            ><img src="https://flagcdn.com/w20/us.png" width="16" alt="USA" />
-            USD</span
-          >
-          <a href="helpcen.html" class="text-primary"
-            ><i class="bi bi-headset"></i
-          ></a>
-          <a href="profile.html" class="profile-link"
-            ><img
-              src="https://i.pravatar.cc/100?img=47"
-              width="32"
-              height="32"
-              class="rounded-circle"
-          /></a>
-        </div>
-      </div>
-    </nav>
-
-    <div
-      class="modal fade"
-      id="navSearchModal"
-      tabindex="-1"
-      aria-labelledby="navSearchModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="navSearchModalLabel">
-              Search stays
-            </h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <label class="form-label fw-semibold" for="mDest"
-              >Destination</label
-            >
-            <input
-              type="text"
-              id="mDest"
-              class="form-control mb-1"
-              placeholder="e.g. Cairo, Barcelona, Nice"
-            />
-            <div id="mDestError" class="text-danger small mb-2 d-none">
-              Please enter a destination.
-            </div>
-            <label class="form-label fw-semibold" for="mCheckin"
-              >Check in</label
-            >
-            <input type="date" id="mCheckin" class="form-control mb-3" />
-            <label class="form-label fw-semibold" for="mCheckout"
-              >Check out</label
-            >
-            <input type="date" id="mCheckout" class="form-control mb-2" />
-            <div id="mDatesError" class="text-danger small mb-2 d-none">
-              Check-out date must be after check-in date.
-            </div>
-            <label class="form-label fw-semibold" for="mGuests">Guests</label>
-            <select id="mGuests" class="form-select">
-              <option value="1">1 guest</option>
-              <option value="2" selected>2 guests</option>
-              <option value="3">3 guests</option>
-              <option value="4">4+ guests</option>
-            </select>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button
-              type="button"
-              class="btn btn-primary"
-              id="searchApply"
-            >
-              Search
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
 
-<div class="container">
+  </div>
+</nav>
+        <div class="container">
     <div class="hero">
-<p><a href="account.html" class="text-primary text-decoration-none"><i class="bi bi-chevron-left"></i> Back to Account articles</a></p>
 <h1>Account<i class="bi bi-chevron-compact-right"></i>International travel documents</h1>
+<!-- //////////////////////////////////////// -->
+ <!-- /////////////////////////////////////// -->
 <h2>International travel documents</h2>
-<p>If you’re traveling internationally, you may need travel documents such as a passport, travel visa, ETA, or ESTA. If you don't have the right documents, many countries will deny you entry. To help you avoid any added fees or delays, we recommend you obtain your travel documents well in advance of your trip.
-To help you out, we’ve gathered a list of some common documents you may need. However, you’ll still need to check with the embassy or consulate of the country you’re traveling to for a complete list of requirements.</p>
+<p>If you're traveling internationally, you may need travel documents such as a passport, travel visa, ETA, or ESTA. If you don't have the right documents, many countries will deny you entry. To help you avoid any added fees or delays, we recommend you obtain your travel documents well in advance of your trip.
+To help you out, we've gathered a list of some common documents you may need. However, you'll still need to check with the embassy or consulate of the country you're traveling to for a complete list of requirements.</p>
+   <!-- //////////////////////////////////////// -->
+ <!-- /////////////////////////////////////// -->
 <h3>All international travel<br>Passports</h3>
  <p>A passport is a government-issued ID in the form of a passbook (valid for all international travel).</p>
+ <!-- //////////////////////////////////////// -->
+ <!-- /////////////////////////////////////// -->
  <h4>Visas</h4>
 <p>A travel visa lets you enter and depart a specific country. You may need to get separate visas for each individual port or connection on your itinerary. Some countries don't require one at all, but it's important to always check in advance. Travel to the United States</p>
+ <!-- //////////////////////////////////////// -->
+ <!-- /////////////////////////////////////// -->
 <h4>ESTA</h4>
- <p>If you wish to enter the United States under the Visa Waiver Program, you must apply for authorization to travel using the Electronic System for Travel Authorization (ESTA). You should apply at least 72 hours (about 3 days) before departure. You can apply online and get details at the US Department of Homeland Security.</p>
+ <p>If you wish to enter the United States under the Visa Waiver Program, you must apply for authorization to travel using the Electronic System for Travel Authorization (ESTA). You should apply at least 72 hours (about 3 days) before departure. You can apply online and get details at the US Department of Homeland Security.</p>
 
+<!-- //////////////////////////////////////// -->
+ <!-- /////////////////////////////////////// -->
   <h4>EVUS</h4>
-<p>If you’re a citizen or national of the People’s Republic of China (PRC), have a 10-year US visitor visa (class B1, B2, or B1/B2), and are planning to travel to the United States, you’re required to enroll in the Electronic Visa Update System (EVUS). Once you’re done, enrollment should be valid for multiple trips over a period of 2 years or until your passport or visa expires. To learn more, visit the EVUS enrollment website.</p>
+<p>If you're a citizen or national of the People's Republic of China (PRC), have a 10-year US visitor visa (class B1, B2, or B1/B2), and are planning to travel to the United States, you're required to enroll in the Electronic Visa Update System (EVUS). Once you're done, enrollment should be valid for multiple trips over a period of 2 years or until your passport or visa expires. To learn more, visit the EVUS enrollment website.</p>
+<!-- //////////////////////////////////////// -->
+ <!-- /////////////////////////////////////// -->
   <h4>Travel to the United Kingdom</h4>
 <p> Some visa-exempt non-citizens may be required to have an Electronic Travel Authorization (ETA) to travel to the UK.</p>
 <p>
@@ -198,189 +87,139 @@ To help you out, we’ve gathered a list of some common documents you may need. 
     </ul>
 </p>
 <p>You can apply through the UK ETA app or online at GOV.UK, and it usually takes about 3 business days to get a decision.
-For more information, go to Electronic Travel Authorization (ETA) at GOV.UK. You can also check if you need a UK visa here.</p>
+For more information, go to Electronic Travel Authorization (ETA) at GOV.UK. You can also check if you need a UK visa here.</p>
+ <!-- //////////////////////////////////////// -->
+ <!-- /////////////////////////////////////// -->
 <h4>Travel to Australia or Canadav</h4>
-<p>An Electronic Travel Authority or Authorization (ETA) is required for non-citizens to travel to Australia and for visa-exempt non-citizens to travel to Canada. Once you’re approved, it’s electronically linked to your passport, so you won't need to carry an extra document. Head over to Australia Electronic Travel Authority or Canada Electronic Travel Authorization to get more information and apply.</p>
+<p>An Electronic Travel Authority or Authorization (ETA) is required for non-citizens to travel to Australia and for visa-exempt non-citizens to travel to Canada. Once you're approved, it's electronically linked to your passport, so you won't need to carry an extra document. Head over to Australia Electronic Travel Authority or Canada Electronic Travel Authorization to get more information and apply.</p>
+<!-- //////////////////////////////////////// -->
+ <!-- /////////////////////////////////////// -->
   <h4>Travel to New Zealand</h4>
-  <p>A New Zealand Electronic Travel Authority (NZeTA) is required for visa-exempt non-citizens to enter New Zealand. You'll also likely have to pay an International Visitor Conservation and Tourism Levy (IVL) before you leave.</p>
+  <p>A New Zealand Electronic Travel Authority (NZeTA) is required for visa-exempt non-citizens to enter New Zealand. You'll also likely have to pay an International Visitor Conservation and Tourism Levy (IVL) before you leave.</p>
+  <!-- //////////////////////////////////////// -->
+ <!-- /////////////////////////////////////// -->
   <h4>Traveling with minors</h4>
-  <p>If you’re traveling with minors, you may need to provide notarized documentation and letters of permission if both parents are not present. You should confirm this with the embassy or consulate of the country you’re visiting.</p>
-<p>South Africa requires minors to provide their birth certificate in addition to their passport. For more information, review South Africa's regulations for traveling with children.</p>
+  <p>If you're traveling with minors, you may need to provide notarized documentation and letters of permission if both parents are not present. You should confirm this with the embassy or consulate of the country you're visiting.</p>
+<p>South Africa requires minors to provide their birth certificate in addition to their passport. For more information, review South Africa's regulations for traveling with children.</p>
 <hr class="section-divider">
-<div class="icon" id="topicFeedback">
+<div class="icon">
     <p>Was this topic helpful?</p>
-    <i class="bi bi-hand-thumbs-up" role="button" tabindex="0" aria-label="Yes, helpful" style="cursor:pointer"></i>
-    <i class="bi bi-hand-thumbs-down" role="button" tabindex="0" aria-label="No, not helpful" style="cursor:pointer"></i>
+    <i class="bi bi-hand-thumbs-up"></i>
+    <i class="bi bi-hand-thumbs-down"></i>
 </div>
-<script>
-  var topicFeedback = document.getElementById("topicFeedback");
-  topicFeedback.querySelectorAll("i").forEach(function (icon) {
-    icon.addEventListener("click", function () {
-      topicFeedback.innerHTML = "<p>Thanks for your feedback!</p>";
-    });
-  });
-</script>
 </div>
 </div>
     </section>
-        <footer class="bg-dark text-white mt-5">
-      <div class="container-fluid px-5 py-4">
+    <!-- /////////////////////////////////// -->
+     <!-- /////////////////////////////////// -->
+<footer class="bg-dark text-white mt-5">
+    <div class="container-fluid px-5 py-4">
         <div class="row g-4">
-          <div class="col-lg-4">
-            <h5 class="fw-bold">Giza<span class="text-warning">Stay</span></h5>
 
-            <p class="small">
-              We help you find and book the perfect stay from cozy guesthouses
-              to top hotels—with ease, trust, and the best deals.
-            </p>
+            <div class="col-lg-4">
+                <h5 class="fw-bold">
+                    Giza<span class="text-warning">Stay</span>
+                </h5>
 
-            <h6 class="text-primary">Download Our App</h6>
+                <p class="small">
+                    We help you find and book the perfect stay
+                    from cozy guesthouses to top hotels—with
+                    ease, trust, and the best deals.
+                </p>
 
-            <div class="d-flex gap-2">
-              <a href="#" class="btn btn-secondary btn-sm">
-                <i class="bi bi-apple"></i>
-                App Store
-              </a>
+                <h6 class="text-primary">Download Our App</h6>
 
-              <a href="#" class="btn btn-secondary btn-sm">
-                <i class="bi bi-google-play"></i>
-                Google Play
-              </a>
+                <div class="d-flex gap-2">
+                    <a href="#" class="btn btn-secondary btn-sm">
+                        <i class="bi bi-apple"></i>
+                        App Store
+                    </a>
+
+                    <a href="#" class="btn btn-secondary btn-sm">
+                        <i class="bi bi-google-play"></i>
+                        Google Play
+                    </a>
+                </div>
             </div>
-          </div>
 
-          <div class="col-6 col-lg-2">
-            <h6 class="text-primary">Explore</h6>
+            <div class="col-6 col-lg-2">
+                <h6 class="text-primary">Explore</h6>
 
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Trending Destinations</a
-            >
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Summer Hotspots</a
-            >
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Winter Getaways</a
-            >
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Weekend Deals</a
-            >
-            <a href="#" class="d-block text-white text-decoration-none small"
-              >Family-Friendly Stays</a
-            >
-          </div>
-
-          <div class="col-6 col-lg-2">
-            <h6 class="text-primary">Property Types</h6>
-
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Hotels</a
-            >
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Apartments</a
-            >
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Villas</a
-            >
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Cabins</a
-            >
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Glamping</a
-            >
-            <a href="#" class="d-block text-white text-decoration-none small"
-              >Domes</a
-            >
-          </div>
-
-          <div class="col-6 col-lg-2">
-            <h6 class="text-primary">Support</h6>
-
-            <a
-              href="helpcen.html"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Help Centre</a
-            >
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >Live Chat Support</a
-            >
-            <a
-              href="#"
-              class="d-block text-white text-decoration-none small mb-2"
-              >FAQs</a
-            >
-            <a href="#" class="d-block text-white text-decoration-none small"
-              >Contact Us</a
-            >
-          </div>
-
-          <div class="col-6 col-lg-2">
-            <h6 class="text-primary">Get In Touch</h6>
-
-            <p class="small mb-2">+20 123 456 7890</p>
-            <p class="small">support@gizastay.com</p>
-
-            <div class="d-flex gap-3">
-              <a href="#" class="text-white">
-                <i class="bi bi-facebook"></i>
-              </a>
-
-              <a href="#" class="text-white">
-                <i class="bi bi-instagram"></i>
-              </a>
-
-              <a href="#" class="text-white">
-                <i class="bi bi-youtube"></i>
-              </a>
-
-              <a href="#" class="text-white">
-                <i class="bi bi-twitter"></i>
-              </a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Trending Destinations</a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Summer Hotspots</a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Winter Getaways</a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Weekend Deals</a>
+                <a href="#" class="d-block text-white text-decoration-none small">Family-Friendly Stays</a>
             </div>
-          </div>
+
+            <div class="col-6 col-lg-2">
+                <h6 class="text-primary">Property Types</h6>
+
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Hotels</a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Apartments</a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Villas</a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Cabins</a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Glamping</a>
+                <a href="#" class="d-block text-white text-decoration-none small">Domes</a>
+            </div>
+
+            <div class="col-6 col-lg-2">
+                <h6 class="text-primary">Support</h6>
+
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Help Centre</a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">Live Chat Support</a>
+                <a href="#" class="d-block text-white text-decoration-none small mb-2">FAQs</a>
+                <a href="#" class="d-block text-white text-decoration-none small">Contact Us</a>
+            </div>
+
+            <div class="col-6 col-lg-2">
+                <h6 class="text-primary">Get In Touch</h6>
+
+                <p class="small mb-2">+20 123 456 7890</p>
+                <p class="small">support@gizastay.com</p>
+
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-white">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="#" class="text-white">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                    <a href="#" class="text-white">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+
+                    <a href="#" class="text-white">
+                        <i class="bi bi-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
         </div>
-      </div>
+    </div>
 
-      <div class="border-top border-secondary py-3">
+    <div class="border-top border-secondary py-3">
         <div class="container-fluid px-5">
-          <div
-            class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3"
-          >
-            <small> © 2025 GizaStay. All rights reserved. </small>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
 
-            <div class="d-flex gap-2">
-              <span class="badge bg-light text-dark">VISA</span>
-              <span class="badge bg-light text-dark">AMEX</span>
-              <span class="badge bg-light text-dark">MC</span>
-              <span class="badge bg-light text-dark">Stripe</span>
-              <span class="badge bg-light text-dark">PayPal</span>
-              <span class="badge bg-light text-dark">G Pay</span>
+                <small>
+                    © 2025 GizaStay. All rights reserved.
+                </small>
+
+                <div class="d-flex gap-2">
+                    <span class="badge bg-light text-dark">VISA</span>
+                    <span class="badge bg-light text-dark">AMEX</span>
+                    <span class="badge bg-light text-dark">MC</span>
+                    <span class="badge bg-light text-dark">Stripe</span>
+                    <span class="badge bg-light text-dark">PayPal</span>
+                    <span class="badge bg-light text-dark">G Pay</span>
+                </div>
+
             </div>
-          </div>
         </div>
-      </div>
-    </footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="script.js"></script>
-<script src="js/app.js"></script>
+    </div>
+</footer>
 </body>
 </html>
