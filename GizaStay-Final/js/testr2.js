@@ -1,6 +1,3 @@
-/* Profile page behaviour. Tabs, collapses and modal toggles are handled by
-   Bootstrap via data-bs-* attributes in profile.html; this file only covers
-   the data-driven pieces (wishlist, reviews, payments, trips) and localStorage. */
 const $ = (id) => document.getElementById(id);
 const qa = (s) => Array.from(document.querySelectorAll(s));
 const modalOf = (el) => bootstrap.Modal.getOrCreateInstance(el);
@@ -24,7 +21,6 @@ function gotoTab(contentId) {
   if (trigger) bootstrap.Tab.getOrCreateInstance(trigger).show();
 }
 
-/* ---------- Wishlist ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   const emptyEl = $("wishlist-empty");
   const gridEl = $("wishlist-grid");
@@ -66,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderWishlist();
 });
 
-/* ---------- Reviews ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   const listEl = $("reviews-list");
   const emptyEl = $("reviews-empty");
@@ -253,7 +248,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.GizaReviews = { addReview };
 });
 
-/* ---------- Name (syncs to sidebar + localStorage) ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   const firstInput = $("firstNameInput");
   const lastInput = $("lastNameInput");
@@ -274,7 +268,6 @@ document.addEventListener("DOMContentLoaded", () => {
   syncName();
 });
 
-/* ---------- Avatar (Edit button is a <label for="avatar-file-input">) ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   const fileInput = $("avatar-file-input");
   const profileImg = $("profile-avatar");
@@ -294,7 +287,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* ---------- Gender icon ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   const sel = $("genderSelect");
   const icon = $("genderIcon");
@@ -305,7 +297,6 @@ document.addEventListener("DOMContentLoaded", () => {
   sync();
 });
 
-/* ---------- Payments ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   const modalEl = $("paymentMethodsModal");
   const typeStep = $("payment-type-step");
@@ -522,7 +513,6 @@ document.addEventListener("DOMContentLoaded", () => {
   resetModal();
 });
 
-/* ---------- Trips ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = $("trips-toggle-btn");
   const submenu = $("trips-submenu");
@@ -837,7 +827,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderTrips();
 });
 
-/* ---------- Settings ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   const recsToggle = $("recommendations-toggle");
   if (recsToggle) {
