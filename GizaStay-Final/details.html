@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GizaStay | Stay details</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/details.css">
+</head>
+<body class="bg-light">
+
+    <style>
+      @media (min-width: 992px) {
+        .nav-search-box {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    </style>
+    <nav class="navbar bg-white border-bottom shadow-sm py-3 sticky-top">
+      <div
+        class="container-fluid px-4 d-flex align-items-center gap-3 flex-wrap position-relative"
+      >
+        <a
+          href="index.html"
+          class="navbar-brand fw-bold fs-3 text-primary order-1 me-0"
+          >Giza<span class="text-warning">Stay</span></a
+        >
+
+        <div
+          class="nav-search-box d-flex align-items-center bg-white border rounded-4 p-1 shadow-sm w-100 mx-auto order-3 order-lg-2 flex-lg-grow-1"
+          style="max-width: 580px"
+        >
+          <div
+            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill border-end"
+          >
+            <input
+              type="text"
+              id="navDest"
+              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
+              placeholder="Anywhere"
+              readonly
+            />
+          </div>
+          <div
+            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill border-end"
+          >
+            <input
+              type="text"
+              id="navDates"
+              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
+              placeholder="Any week"
+              readonly
+            />
+          </div>
+          <div
+            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill"
+          >
+            <input
+              type="text"
+              id="navGuests"
+              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
+              placeholder="Add guests"
+              readonly
+            />
+          </div>
+          <button
+            type="button"
+            class="btn btn-primary rounded-3 d-flex align-items-center justify-content-center flex-shrink-0 ms-1"
+            style="width: 38px; height: 38px"
+            data-bs-toggle="modal"
+            data-bs-target="#navSearchModal"
+          >
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 order-2 ms-auto order-lg-3">
+          <span class="small"
+            ><img src="https://flagcdn.com/w20/us.png" width="16" alt="USA" />
+            USD</span
+          >
+          <a href="helpcen.html" class="text-primary"
+            ><i class="bi bi-headset"></i
+          ></a>
+          <a href="profile.html" class="profile-link"
+            ><img
+              src="https://i.pravatar.cc/100?img=47"
+              width="32"
+              height="32"
+              class="rounded-circle"
+          /></a>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="modal fade"
+      id="navSearchModal"
+      tabindex="-1"
+      aria-labelledby="navSearchModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="navSearchModalLabel">
+              Search stays
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <label class="form-label fw-semibold" for="mDest"
+              >Destination</label
+            >
+            <input
+              type="text"
+              id="mDest"
+              class="form-control mb-1"
+              placeholder="e.g. Cairo, Barcelona, Nice"
+            />
+            <div id="mDestError" class="text-danger small mb-2 d-none">
+              Please enter a destination.
+            </div>
+            <label class="form-label fw-semibold" for="mCheckin"
+              >Check in</label
+            >
+            <input type="date" id="mCheckin" class="form-control mb-3" />
+            <label class="form-label fw-semibold" for="mCheckout"
+              >Check out</label
+            >
+            <input type="date" id="mCheckout" class="form-control mb-2" />
+            <div id="mDatesError" class="text-danger small mb-2 d-none">
+              Check-out date must be after check-in date.
+            </div>
+            <label class="form-label fw-semibold" for="mGuests">Guests</label>
+            <select id="mGuests" class="form-select">
+              <option value="1">1 guest</option>
+              <option value="2" selected>2 guests</option>
+              <option value="3">3 guests</option>
+              <option value="4">4+ guests</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="searchApply"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="container bg-white px-0 min-vh-100 shadow-sm">
+  <div class="container">
+
+    <div class="d-flex justify-content-between align-items-start pt-3">
+      <div>
+        <h1 class="fs-4 fw-bold m-0" id="stayTitle">Entire rental unit in Versailles</h1>
+        <p class="small text-muted m-0" id="stayLocation">Barcelona, Spain</p>
+      </div>
+      <div class="d-flex gap-2 top-actions">
+        <button class="rounded-circle bg-white shadow-sm d-inline-flex align-items-center justify-content-center border-0 p-2" id="favBtn" title="Save"><i class="bi bi-heart"></i></button>
+        <button class="rounded-circle bg-white shadow-sm d-inline-flex align-items-center justify-content-center border-0 p-2" title="Share" onclick="alert('Link copied!')"><i class="bi bi-share"></i></button>
+      </div>
+    </div>
+
+    <ul class="nav border-bottom gap-3 mt-3" id="topTabs">
+      <li class="nav-item"><a class="nav-link text-primary border-bottom border-primary border-2 rounded-0" href="#overview">Overview</a></li>
+      <li class="nav-item"><a class="nav-link text-secondary fw-semibold border-0 px-0 py-2 small" href="#amenities">Amenities</a></li>
+      <li class="nav-item"><a class="nav-link text-secondary fw-semibold border-0 px-0 py-2 small" href="#location">Location</a></li>
+      <li class="nav-item"><a class="nav-link text-secondary fw-semibold border-0 px-0 py-2 small" href="#rooms">Rooms</a></li>
+      <li class="nav-item"><a class="nav-link text-secondary fw-semibold border-0 px-0 py-2 small" href="#calendar">Calendar</a></li>
+      <li class="nav-item"><a class="nav-link text-secondary fw-semibold border-0 px-0 py-2 small" href="#reviews">Reviews</a></li>
+    </ul>
+
+    <section id="overview">
+      <div class="row g-2 mt-2">
+        <div class="col-12 col-md-7">
+          <div class="position-relative ratio ratio-16x9 rounded-3 overflow-hidden">
+            <img id="galleryMain" class="object-fit-cover" src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1000&auto=format&fit=crop" alt="Living room">
+            <div class="host-badge position-absolute bottom-0 start-0 m-2 bg-white rounded-pill shadow d-flex align-items-center gap-2 p-1 pe-3 w-auto h-auto" style="top:auto;left:auto">
+              <img class="rounded-circle" src="https://randomuser.me/api/portraits/women/65.jpg" alt="host">
+              <div><small class="d-block text-muted lh-1">Host</small><strong class="small">Selena Doberman</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-5">
+          <div class="row g-2">
+            <div class="col-6"><div class="ratio ratio-1x1 rounded-3 overflow-hidden"><img class="object-fit-cover gallery-side" src="https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=600&auto=format&fit=crop" alt="Kitchen"></div></div>
+            <div class="col-6"><div class="ratio ratio-1x1 rounded-3 overflow-hidden"><img class="object-fit-cover gallery-side" src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=600&auto=format&fit=crop" alt="Bedroom"></div></div>
+            <div class="col-6"><div class="ratio ratio-1x1 rounded-3 overflow-hidden"><img class="object-fit-cover gallery-side" src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=80&w=600&auto=format&fit=crop" alt="Living"></div></div>
+            <div class="col-6"><div class="position-relative ratio ratio-1x1 rounded-3 overflow-hidden"><img class="object-fit-cover gallery-side" src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=600&auto=format&fit=crop" alt="More"><button class="position-absolute bottom-0 end-0 m-2 bg-dark bg-opacity-75 text-white border-0 rounded-2 px-2 py-1 small w-auto h-auto" style="top:auto;left:auto" data-bs-toggle="modal" data-bs-target="#galleryModal"><i class="bi bi-grid-3x3-gap"></i> 10</button></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="row g-4">
+
+      <div class="col-lg-7">
+
+        <section class="py-3 border-bottom">
+          <h5 class="fw-bold fs-6 mb-1">Description</h5>
+          <p class="small text-muted">2 guests · Studio · 1 bed · 1.5 baths</p>
+          <p class="small text-muted" id="descText">
+            Welcome to my place! Enjoy a fully equipped 17 m² studio, ideally located a short walk from the main square and a 5-minute walk to the train station. It consists of a living room open to a fully equipped kitchen (dishwasher, microwave, Nespresso machine, fridge-freezer, ...
+            <span id="descMore" style="display:none;">washing machine, smart TV, high-speed WiFi, comfortable sofa-bed, work desk, and a modern bathroom with walk-in shower. Perfect for couples or solo travelers looking for comfort, calm and easy access to the city centre (30 min by train). Quiet building, shops and cafés right downstairs.</span>
+          </p>
+          <button class="btn btn-outline-primary btn-sm" id="descToggle">Show More</button>
+        </section>
+
+        <section class="py-3 border-bottom" id="amenities">
+          <h5 class="fw-bold fs-6 mb-1">Amenities</h5>
+          <div class="row amen-list" id="amenList">
+            <div class="col-6 small text-dark py-1"><i class="bi bi-cup-hot"></i> Kitchen</div>
+            <div class="col-6 small text-dark py-1"><i class="bi bi-wifi"></i> Free Wireless Internet</div>
+            <div class="col-6 small text-dark py-1"><i class="bi bi-badge-wc"></i> Washing Machine</div>
+            <div class="col-6 small text-dark py-1"><i class="bi bi-tsunami"></i> Pool</div>
+            <div class="col-6 small text-dark py-1"><i class="bi bi-tv"></i> Television</div>
+            <div class="col-6 small text-dark py-1"><i class="bi bi-people"></i> Barbecue</div>
+          </div>
+          <button class="btn btn-outline-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#amenModal">Show All 15 Amenities</button>
+        </section>
+
+        <section class="py-3 border-bottom" id="location">
+          <h5 class="fw-bold fs-6 mb-1">Location</h5>
+          <div class="position-relative rounded-3 overflow-hidden bg-light" style="height:260px">
+            <iframe title="map" class="w-100 h-100 d-block border-0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d884021.9961831894!2d31.258493000000005!3d30.059488000000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fa60b21beeb%3A0x79dfb296e8423bba!2sCairo%2C%20Cairo%20Governorate!5e0!3m2!1sen!2seg!4v1787671984810!5m2!1sen!2seg" loading="lazy" allowfullscreen="" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="border rounded-3 shadow bg-white p-3 mt-3" id="bookingCard">
+          <div class="row g-2">
+            <div class="col-6"><label class="form-label small fw-semibold mb-1"><i class="bi bi-calendar"></i> Check-in</label><input type="text" id="checkIn" value="07/10/2025" class="form-control form-control-sm"></div>
+            <div class="col-6"><label class="form-label small fw-semibold mb-1"><i class="bi bi-calendar"></i> Check-out</label><input type="text" id="checkOut" value="07/13/2025" class="form-control form-control-sm"></div>
+            <div class="col-12"><label class="form-label small fw-semibold mb-1">Guests</label><select id="guests" class="form-select form-select-sm"><option>2 adults</option><option>1 adult</option><option>3 adults</option><option>2 adults, 1 child</option></select></div>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between align-items-center small"><strong>Details</strong><button class="btn btn-outline-secondary btn-sm" id="clearBtn">Clear</button></div>
+          <div class="d-flex justify-content-between small"><span>Capacity: 18 Persons</span></div>
+          <div class="d-flex justify-content-between small"><span id="nightsLabel">For 3 nights (excl. taxes)</span><span id="nightsPrice">$300</span></div>
+          <div class="d-flex justify-content-between small"><span>Service fee &amp; extras</span><span id="extraPrice">$0</span></div>
+          <hr>
+          <div class="d-flex justify-content-between"><strong>Total Price:</strong><strong id="totalPrice">$999</strong></div>
+          <button class="btn btn-primary w-100 fw-bold mt-3 rounded-3" id="reserveBtn">Reserve</button>
+          <p class="text-center small text-muted mt-2 mb-0">You won't be charged yet</p>
+        </div>
+      </div>
+    </div>
+
+        <section class="py-3 border-bottom" id="calendar">
+          <h5 class="fw-bold fs-6 mb-1">Calendar</h5>
+          <div class="border rounded-3 p-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <button id="calPrev" class="rounded-circle border-0 bg-light px-2">&lt;</button>
+              <div class="d-flex gap-5">
+                <strong id="calTitle1">July &nbsp; 2025</strong>
+                <strong id="calTitle2">August &nbsp; 2025</strong>
+              </div>
+              <button id="calNext" class="rounded-circle border-0 bg-light px-2">&gt;</button>
+            </div>
+            <div class="row">
+              <div class="col-6"><div class="row row-cols-7 g-0 text-center small text-muted mb-1"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div><div id="cal1" class="row row-cols-7 g-0 text-center small cal-grid"></div></div>
+              <div class="col-6"><div class="row row-cols-7 g-0 text-center small text-muted mb-1"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div><div id="cal2" class="row row-cols-7 g-0 text-center small cal-grid"></div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-3 border-bottom" id="rooms">
+          <h5 class="fw-bold fs-6 mb-1">Rooms</h5>
+          <div class="d-flex gap-2 flex-wrap mb-3">
+            <button class="btn btn-sm rounded-pill border fw-semibold bg-dark text-white border-dark" data-filter="all">All Rooms</button>
+            <button class="btn btn-sm rounded-pill border fw-semibold bg-white text-dark" data-filter="1">1 Bed</button>
+            <button class="btn btn-sm rounded-pill border fw-semibold bg-white text-dark" data-filter="2">2 Beds</button>
+            <button class="btn btn-sm rounded-pill border fw-semibold bg-white text-dark" data-filter="3">3 Beds</button>
+          </div>
+
+          <div id="roomsList"></div>
+        </section>
+
+        <section class="py-3 border-bottom" id="reviews">
+          <h5 class="fw-bold fs-6 mb-1">Reviews</h5>
+          <p class="mb-1"><strong id="reviewScore">5.0</strong> · <span class="text-primary small">Excellent</span> <span class="text-muted small">· <span id="reviewCount">1,240</span> reviews</span></p>
+          <div class="d-flex gap-2 align-items-stretch mt-2 flex-wrap">
+            <div class="overall-left flex-fill border rounded-3 p-2 text-center">
+              <small class="small text-muted">Overall Rating</small>
+              <div class="bars d-flex align-items-end gap-1 justify-content-center my-1" style="height:40px">
+                <span style="height:55%"></span><span style="height:80%"></span><span style="height:65%"></span><span style="height:90%"></span><span style="height:100%"></span>
+              </div>
+              <strong class="small fw-bold">5.0</strong>
+            </div>
+            <div class="flex-fill border rounded-3 p-2 text-center"><i class="fs-6 bi bi-house"></i><small class="d-block small text-muted">Amenities</small><strong class="small fw-bold d-block">6.0</strong></div>
+            <div class="flex-fill border rounded-3 p-2 text-center"><i class="fs-6 bi bi-stars"></i><small class="d-block small text-muted">Cleanliness</small><strong class="small fw-bold d-block">6.0</strong></div>
+            <div class="flex-fill border rounded-3 p-2 text-center"><i class="fs-6 bi bi-chat"></i><small class="d-block small text-muted">Communication</small><strong class="small fw-bold d-block">5.6</strong></div>
+            <div class="flex-fill border rounded-3 p-2 text-center"><i class="fs-6 bi bi-geo-alt"></i><small class="d-block small text-muted">Location</small><strong class="small fw-bold d-block">5.0</strong></div>
+            <div class="flex-fill border rounded-3 p-2 text-center"><i class="fs-6 bi bi-tag"></i><small class="d-block small text-muted">Value</small><strong class="small fw-bold d-block">5.0</strong></div>
+          </div>
+
+          <div class="row mt-3 g-3" id="reviewsRow"></div>
+          <button class="btn btn-outline-primary btn-sm mt-3">Show All 1 240 Reviews</button>
+        </section>
+
+        <section class="py-3 border-bottom">
+          <h5 class="fw-bold fs-6 mb-1">Policies</h5>
+          <p class="text-muted small">The property takes special requests - add them in the next step!</p>
+          <div class="policy-table">
+            <div class="policy-row"><div><i class="bi bi-box-arrow-in-right"></i> Check-in</div><div><small>From 15:00 to 18:30<br>You'll need to let the property know in advance what time you'll arrive.</small></div></div>
+            <div class="policy-row"><div><i class="bi bi-box-arrow-right"></i> Check-out</div><div><small>From 00:00 to 11:30</small></div></div>
+            <div class="policy-row"><div><i class="bi bi-x-circle"></i> Cancellation / prepayment</div><div><small>Cancellation and prepayment policies vary according to accommodation type. Please check what condition may apply to each option when making your selection.</small></div></div>
+            <div class="policy-row"><div><i class="bi bi-people"></i> Children and beds</div><div><small>Child policies: children of any age are welcome. To see correct prices and occupancy information, please add the number of children in your group and their ages to your search. Crib and extra beds are not available at this property.</small></div></div>
+            <div class="policy-row"><div><i class="bi bi-person"></i> No age restriction</div><div><small>Guests of all ages are welcome.</small></div></div>
+            <div class="policy-row"><div><i class="bi bi-moon"></i> Quiet hours</div><div><small>Guests must be quiet between 22:00 and 10:00.</small></div></div>
+            <div class="policy-row"><div><i class="bi bi-slash-circle"></i> Smoking</div><div><small>Smoking not allowed.</small></div></div>
+            <div class="policy-row"><div><i class="bi bi-heart"></i> Pets</div><div><small>Pets are not allowed.</small></div></div>
+          </div>
+        </section>
+      </div>
+
+    </div>
+
+  <div class="bg-light mt-2 pt-3 pb-4">
+    <div class="container">
+      <h5 class="fw-bolder fs-5 mb-3">Popular things to do nearby</h5>
+      <div class="position-relative">
+        <button class="position-absolute top-0 mt-5 bg-white border-0 rounded-circle shadow-sm p-2 z-2 start-0" onclick="scrollRow('thingsRow',-300)">‹</button>
+        <div class="d-flex gap-3 overflow-auto pb-2" style="scroll-behavior:smooth" id="thingsRow"></div>
+        <button class="position-absolute top-0 mt-5 bg-white border-0 rounded-circle shadow-sm p-2 z-2 end-0" onclick="scrollRow('thingsRow',300)">›</button>
+      </div>
+
+      <h5 class="fw-bolder fs-5 mb-3 mt-4">Similar stays you may like <span class="float-end"><button class="rounded-circle bg-white shadow-sm d-inline-flex align-items-center justify-content-center border-0 p-1" onclick="scrollRow('simRow',-300)">‹</button> <button class="rounded-circle bg-white shadow-sm d-inline-flex align-items-center justify-content-center border-0 p-1" onclick="scrollRow('simRow',300)">›</button></span></h5>
+      <div class="d-flex gap-3 overflow-auto pb-2" style="scroll-behavior:smooth" id="simRow"></div>
+    </div>
+  </div>
+
+        <footer class="bg-dark text-white mt-5">
+      <div class="container-fluid px-5 py-4">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <h5 class="fw-bold">Giza<span class="text-warning">Stay</span></h5>
+
+            <p class="small">
+              We help you find and book the perfect stay from cozy guesthouses
+              to top hotels—with ease, trust, and the best deals.
+            </p>
+
+            <h6 class="text-primary">Download Our App</h6>
+
+            <div class="d-flex gap-2">
+              <a href="#" class="btn btn-secondary btn-sm">
+                <i class="bi bi-apple"></i>
+                App Store
+              </a>
+
+              <a href="#" class="btn btn-secondary btn-sm">
+                <i class="bi bi-google-play"></i>
+                Google Play
+              </a>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Explore</h6>
+
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Trending Destinations</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Summer Hotspots</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Winter Getaways</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Weekend Deals</a
+            >
+            <a href="#" class="d-block text-white text-decoration-none small"
+              >Family-Friendly Stays</a
+            >
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Property Types</h6>
+
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Hotels</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Apartments</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Villas</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Cabins</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Glamping</a
+            >
+            <a href="#" class="d-block text-white text-decoration-none small"
+              >Domes</a
+            >
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Support</h6>
+
+            <a
+              href="helpcen.html"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Help Centre</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Live Chat Support</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >FAQs</a
+            >
+            <a href="#" class="d-block text-white text-decoration-none small"
+              >Contact Us</a
+            >
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Get In Touch</h6>
+
+            <p class="small mb-2">+20 123 456 7890</p>
+            <p class="small">support@gizastay.com</p>
+
+            <div class="d-flex gap-3">
+              <a href="#" class="text-white">
+                <i class="bi bi-facebook"></i>
+              </a>
+
+              <a href="#" class="text-white">
+                <i class="bi bi-instagram"></i>
+              </a>
+
+              <a href="#" class="text-white">
+                <i class="bi bi-youtube"></i>
+              </a>
+
+              <a href="#" class="text-white">
+                <i class="bi bi-twitter"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-top border-secondary py-3">
+        <div class="container-fluid px-5">
+          <div
+            class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3"
+          >
+            <small> © 2025 GizaStay. All rights reserved. </small>
+
+            <div class="d-flex gap-2">
+              <span class="badge bg-light text-dark">VISA</span>
+              <span class="badge bg-light text-dark">AMEX</span>
+              <span class="badge bg-light text-dark">MC</span>
+              <span class="badge bg-light text-dark">Stripe</span>
+              <span class="badge bg-light text-dark">PayPal</span>
+              <span class="badge bg-light text-dark">G Pay</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+<div class="modal fade" id="amenModal" tabindex="-1">
+  <div class="modal-dialog"><div class="modal-content">
+    <div class="modal-header"><h6 class="modal-title">All 15 Amenities</h6><button class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body"><ul class="list-unstyled amen-list-full" id="amenModalList">
+      <li class="py-1 small"><i class="bi bi-cup-hot"></i> Kitchen</li><li class="py-1 small"><i class="bi bi-wifi"></i> Free Wireless Internet</li>
+      <li class="py-1 small"><i class="bi bi-badge-wc"></i> Washing Machine</li><li class="py-1 small"><i class="bi bi-tsunami"></i> Pool</li>
+      <li class="py-1 small"><i class="bi bi-tv"></i> Television</li><li class="py-1 small"><i class="bi bi-people"></i> Barbecue</li>
+      <li class="py-1 small"><i class="bi bi-p-circle"></i> Free Parking</li><li class="py-1 small"><i class="bi bi-snow"></i> Air Conditioning</li>
+      <li class="py-1 small"><i class="bi bi-door-open"></i> Self check-in</li><li class="py-1 small"><i class="bi bi-briefcase"></i> Workspace</li>
+      <li class="py-1 small"><i class="bi bi-water"></i> Hot tub</li><li class="py-1 small"><i class="bi bi-shield-check"></i> Smoke detector</li>
+      <li class="py-1 small"><i class="bi bi-camera-video"></i> Security cameras</li><li class="py-1 small"><i class="bi bi-bag"></i> Luggage storage</li>
+      <li class="py-1 small"><i class="bi bi-cup-straw"></i> Coffee maker</li>
+    </ul></div>
+  </div></div>
+</div>
+
+<div class="modal fade" id="galleryModal" tabindex="-1">
+  <div class="modal-dialog modal-lg"><div class="modal-content">
+    <div class="modal-header"><h6 class="modal-title">All photos (10)</h6><button class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body row g-2">
+      <div class="col-6"><img class="img-fluid rounded" alt="Hotel photo" src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=600&auto=format&fit=crop"></div>
+      <div class="col-6"><img class="img-fluid rounded" alt="Hotel photo" src="https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=600&auto=format&fit=crop"></div>
+      <div class="col-6"><img class="img-fluid rounded" alt="Hotel photo" src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=600&auto=format&fit=crop"></div>
+      <div class="col-6"><img class="img-fluid rounded" alt="Hotel photo" src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=80&w=600&auto=format&fit=crop"></div>
+      <div class="col-6"><img class="img-fluid rounded" alt="Hotel photo" src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=600&auto=format&fit=crop"></div>
+      <div class="col-6"><img class="img-fluid rounded" alt="Hotel photo" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=600&auto=format&fit=crop"></div>
+      <div class="col-6"><img class="img-fluid rounded" alt="Hotel photo" src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=600&auto=format&fit=crop"></div>
+      <div class="col-6"><img class="img-fluid rounded" alt="Hotel photo" src="https://images.unsplash.com/photo-1591088398332-8a7791972843?q=80&w=600&auto=format&fit=crop"></div>
+      <div class="col-6"><img class="img-fluid rounded" alt="Hotel photo" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=600&auto=format&fit=crop"></div>
+      <div class="col-6"><img class="img-fluid rounded" alt="Hotel photo" src="https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=600&auto=format&fit=crop"></div>
+    </div>
+  </div></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/hotels.js"></script>
+<script src="./js/details.js"></script>
+<script src="script.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link href="css/support.css" rel="stylesheet" />
+    <title>Help and Feedback</title>
+  </head>
+  <body>
+    <section class="account-page">
+    <style>
+      @media (min-width: 992px) {
+        .nav-search-box {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    </style>
+    <nav class="navbar bg-white border-bottom shadow-sm py-3 sticky-top">
+      <div
+        class="container-fluid px-4 d-flex align-items-center gap-3 flex-wrap position-relative"
+      >
+        <a
+          href="index.html"
+          class="navbar-brand fw-bold fs-3 text-primary order-1 me-0"
+          >Giza<span class="text-warning">Stay</span></a
+        >
+
+        <div
+          class="nav-search-box d-flex align-items-center bg-white border rounded-4 p-1 shadow-sm w-100 mx-auto order-3 order-lg-2 flex-lg-grow-1"
+          style="max-width: 580px"
+        >
+          <div
+            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill border-end"
+          >
+            <input
+              type="text"
+              id="navDest"
+              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
+              placeholder="Anywhere"
+              readonly
+            />
+          </div>
+          <div
+            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill border-end"
+          >
+            <input
+              type="text"
+              id="navDates"
+              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
+              placeholder="Any week"
+              readonly
+            />
+          </div>
+          <div
+            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill"
+          >
+            <input
+              type="text"
+              id="navGuests"
+              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
+              placeholder="Add guests"
+              readonly
+            />
+          </div>
+          <button
+            type="button"
+            class="btn btn-primary rounded-3 d-flex align-items-center justify-content-center flex-shrink-0 ms-1"
+            style="width: 38px; height: 38px"
+            data-bs-toggle="modal"
+            data-bs-target="#navSearchModal"
+          >
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 order-2 ms-auto order-lg-3">
+          <span class="small"
+            ><img src="https://flagcdn.com/w20/us.png" width="16" alt="USA" />
+            USD</span
+          >
+          <a href="helpcen.html" class="text-primary"
+            ><i class="bi bi-headset"></i
+          ></a>
+          <a href="profile.html" class="profile-link"
+            ><img
+              src="https://i.pravatar.cc/100?img=47"
+              width="32"
+              height="32"
+              class="rounded-circle"
+          /></a>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="modal fade"
+      id="navSearchModal"
+      tabindex="-1"
+      aria-labelledby="navSearchModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="navSearchModalLabel">
+              Search stays
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <label class="form-label fw-semibold" for="mDest"
+              >Destination</label
+            >
+            <input
+              type="text"
+              id="mDest"
+              class="form-control mb-1"
+              placeholder="e.g. Cairo, Barcelona, Nice"
+            />
+            <div id="mDestError" class="text-danger small mb-2 d-none">
+              Please enter a destination.
+            </div>
+            <label class="form-label fw-semibold" for="mCheckin"
+              >Check in</label
+            >
+            <input type="date" id="mCheckin" class="form-control mb-3" />
+            <label class="form-label fw-semibold" for="mCheckout"
+              >Check out</label
+            >
+            <input type="date" id="mCheckout" class="form-control mb-2" />
+            <div id="mDatesError" class="text-danger small mb-2 d-none">
+              Check-out date must be after check-in date.
+            </div>
+            <label class="form-label fw-semibold" for="mGuests">Guests</label>
+            <select id="mGuests" class="form-select">
+              <option value="1">1 guest</option>
+              <option value="2" selected>2 guests</option>
+              <option value="3">3 guests</option>
+              <option value="4">4+ guests</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="searchApply"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="container">
+        <div class="account-wrapper">
+          <div class="account-sidebar">
+            <div class="user-info auth-only">
+              <img
+                src="https://i.pravatar.cc/100?img=47"
+                alt="Emmily Morgan"
+                class="avatar"
+              />
+              <div>
+                <h3>Emmily Morgan</h3>
+                <p>Customer Operations</p>
+              </div>
+            </div>
+            <hr />
+            <nav class="account-nav">
+              <a href="#" class="nav-item">
+                <i class="bi bi-person-circle"></i>
+                <span>Personal Data</span>
+              </a>
+              <a href="#" class="nav-item">
+                <i class="bi bi-credit-card"></i>
+                <span>Payment Account</span>
+              </a>
+              <a href="#" class="nav-item">
+                <i class="bi bi-briefcase"></i>
+                <span>Trips</span>
+                <i class="bi bi-chevron-down nav-caret"></i>
+              </a>
+              <a href="#" class="nav-item">
+                <i class="bi bi-heart"></i>
+                <span>Wish Lists</span>
+              </a>
+              <a href="#" class="nav-item active">
+                <i class="bi bi-headset"></i>
+                <span>Support</span>
+              </a>
+              <a href="#" class="nav-item">
+                <i class="bi bi-chat-square-text"></i>
+                <span>My Reviews</span>
+              </a>
+            </nav>
+            <hr />
+            <a href="#" class="nav-item">
+              <i class="bi bi-gear"></i>
+              <span>Settings</span>
+            </a>
+          </div>
+
+          <div class="account-content">
+            <h1>Help and feedback</h1>
+            <p class="subtitle">
+              Have questions or feedback for us? We're listening
+            </p>
+
+            <div class="feedback-list">
+              <a href="#" id="chatNowBtn" class="feedback-item">
+                <span class="icon"><i class="bi bi-chat-dots"></i></span>
+                <span class="label">Chat now</span>
+                <span class="arrow"><i class="bi bi-chevron-right"></i></span>
+              </a>
+              <a href="helpcen.html" class="feedback-item">
+                <span class="icon"
+                  ><i class="bi bi-box-arrow-up-right"></i
+                ></span>
+                <span class="label">Visit the help center</span>
+                <span class="arrow"><i class="bi bi-chevron-right"></i></span>
+              </a>
+              <a
+                href="#"
+                class="feedback-item"
+                data-bs-toggle="modal"
+                data-bs-target="#feedbackModal"
+              >
+                <span class="icon"><i class="bi bi-pencil-square"></i></span>
+                <span class="label">Share your feedback</span>
+                <span class="arrow"><i class="bi bi-chevron-right"></i></span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="login.html" class="logout-link auth-only">
+          <i class="bi bi-box-arrow-right"></i>
+          <span>Log out</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="modal fade" id="feedbackModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content feedback-modal">
+          <div class="modal-body">
+            <div id="feedbackFormPart">
+              <h5 class="feedback-question">
+                How likely are you to recommend GizaStay to a friend or
+                colleague?
+              </h5>
+
+              <div class="rating-scale">
+                <label class="rating-circle">
+                  <input type="radio" name="rating" value="1" />
+                  <span>1</span>
+                </label>
+                <label class="rating-circle">
+                  <input type="radio" name="rating" value="2" />
+                  <span>2</span>
+                </label>
+                <label class="rating-circle">
+                  <input type="radio" name="rating" value="3" />
+                  <span>3</span>
+                </label>
+                <label class="rating-circle">
+                  <input type="radio" name="rating" value="4" />
+                  <span>4</span>
+                </label>
+                <label class="rating-circle">
+                  <input type="radio" name="rating" value="5" />
+                  <span>5</span>
+                </label>
+              </div>
+
+              <label class="feedback-label"
+                >Please include anything else you like us to know</label
+              >
+              <textarea
+                class="form-control feedback-textarea"
+                rows="4"
+                placeholder="Enter your comments here"
+              ></textarea>
+
+              <label class="feedback-label">Email address</label>
+              <p class="feedback-hint">
+                We will use your email solely to reply to this feedback. It will
+                not be shared or used for any other purpose.
+              </p>
+              <input
+                type="email"
+                class="form-control feedback-email"
+                placeholder="you@example.com"
+              />
+              <p
+                id="feedbackError"
+                class="text-danger small mt-2"
+                style="display: none"
+              >
+                Please choose a score or write a comment, and enter a valid
+                email address.
+              </p>
+            </div>
+
+            <div id="thankYouPart" style="display: none">
+              <p class="thank-you-text">Thank you for your feedback.</p>
+            </div>
+          </div>
+          <div class="modal-footer feedback-footer" id="feedbackFormButtons">
+            <button
+              type="button"
+              class="btn btn-not-now"
+              data-bs-dismiss="modal"
+            >
+              Not now
+            </button>
+            <button type="button" class="btn btn-send-feedback">
+              Send feedback
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+        <footer class="bg-dark text-white mt-5">
+      <div class="container-fluid px-5 py-4">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <h5 class="fw-bold">Giza<span class="text-warning">Stay</span></h5>
+
+            <p class="small">
+              We help you find and book the perfect stay from cozy guesthouses
+              to top hotels—with ease, trust, and the best deals.
+            </p>
+
+            <h6 class="text-primary">Download Our App</h6>
+
+            <div class="d-flex gap-2">
+              <a href="#" class="btn btn-secondary btn-sm">
+                <i class="bi bi-apple"></i>
+                App Store
+              </a>
+
+              <a href="#" class="btn btn-secondary btn-sm">
+                <i class="bi bi-google-play"></i>
+                Google Play
+              </a>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Explore</h6>
+
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Trending Destinations</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Summer Hotspots</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Winter Getaways</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Weekend Deals</a
+            >
+            <a href="#" class="d-block text-white text-decoration-none small"
+              >Family-Friendly Stays</a
+            >
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Property Types</h6>
+
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Hotels</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Apartments</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Villas</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Cabins</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Glamping</a
+            >
+            <a href="#" class="d-block text-white text-decoration-none small"
+              >Domes</a
+            >
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Support</h6>
+
+            <a
+              href="helpcen.html"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Help Centre</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Live Chat Support</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >FAQs</a
+            >
+            <a href="#" class="d-block text-white text-decoration-none small"
+              >Contact Us</a
+            >
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Get In Touch</h6>
+
+            <p class="small mb-2">+20 123 456 7890</p>
+            <p class="small">support@gizastay.com</p>
+
+            <div class="d-flex gap-3">
+              <a href="#" class="text-white">
+                <i class="bi bi-facebook"></i>
+              </a>
+
+              <a href="#" class="text-white">
+                <i class="bi bi-instagram"></i>
+              </a>
+
+              <a href="#" class="text-white">
+                <i class="bi bi-youtube"></i>
+              </a>
+
+              <a href="#" class="text-white">
+                <i class="bi bi-twitter"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-top border-secondary py-3">
+        <div class="container-fluid px-5">
+          <div
+            class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3"
+          >
+            <small> © 2025 GizaStay. All rights reserved. </small>
+
+            <div class="d-flex gap-2">
+              <span class="badge bg-light text-dark">VISA</span>
+              <span class="badge bg-light text-dark">AMEX</span>
+              <span class="badge bg-light text-dark">MC</span>
+              <span class="badge bg-light text-dark">Stripe</span>
+              <span class="badge bg-light text-dark">PayPal</span>
+              <span class="badge bg-light text-dark">G Pay</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      var feedbackModal = document.getElementById("feedbackModal");
+      var openTrigger = document.querySelector(
+        '[data-bs-target="#feedbackModal"]',
+      );
+      var closeButtons = feedbackModal.querySelectorAll(
+        '[data-bs-dismiss="modal"]',
+      );
+
+      function openModal() {
+        feedbackModal.classList.add("show");
+        feedbackModal.style.display = "block";
+
+        var backdrop = document.createElement("div");
+        backdrop.className = "modal-backdrop fade show";
+        backdrop.id = "feedbackModalBackdrop";
+        document.body.appendChild(backdrop);
+      }
+
+      function closeModal() {
+        feedbackModal.classList.remove("show");
+        feedbackModal.style.display = "none";
+
+        var backdrop = document.getElementById("feedbackModalBackdrop");
+        if (backdrop) {
+          backdrop.remove();
+        }
+      }
+
+      openTrigger.addEventListener("click", function () {
+        openModal();
+      });
+
+      closeButtons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          closeModal();
+        });
+      });
+
+      feedbackModal.addEventListener("click", function (e) {
+        if (e.target === feedbackModal) {
+          closeModal();
+        }
+      });
+
+      var sendBtn = document.querySelector(".btn-send-feedback");
+      var formPart = document.getElementById("feedbackFormPart");
+      var thankYouPart = document.getElementById("thankYouPart");
+      var footerButtons = document.getElementById("feedbackFormButtons");
+      var feedbackError = document.getElementById("feedbackError");
+
+      sendBtn.addEventListener("click", function () {
+        var rating = feedbackModal.querySelector('input[name="rating"]:checked');
+        var comment = feedbackModal
+          .querySelector(".feedback-textarea")
+          .value.trim();
+        var email = feedbackModal.querySelector(".feedback-email").value.trim();
+        var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        if ((!rating && !comment) || !emailOk) {
+          feedbackError.style.display = "block";
+          return;
+        }
+        feedbackError.style.display = "none";
+        formPart.style.display = "none";
+        thankYouPart.style.display = "block";
+        footerButtons.style.display = "none";
+      });
+
+      var chatNowBtn = document.getElementById("chatNowBtn");
+      if (chatNowBtn) {
+        chatNowBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          alert(
+            "Live chat isn't available in this demo. Use \"Share your feedback\" or email support@gizastay.com.",
+          );
+        });
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

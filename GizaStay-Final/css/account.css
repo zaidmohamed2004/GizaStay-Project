@@ -1,0 +1,51 @@
+.help-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 40px;
+  position: relative;
+  left: -38px;
+  bottom: -3px;
+}
+
+.help-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #1a1a2e;
+}
+
+.help-item .arrow {
+  margin-left: auto;
+}
+.everything h1 {
+  font-size: 32px;
+  line-height: 42px;
+  font-weight: 600;
+  position: relative;
+  top: 3px;
+  left: -39px;
+}
+.everything h3 {
+  font-size: 21px;
+  line-height: 32px;
+  font-weight: 600;
+  color: #1a1a2e;
+  position: relative;
+  bottom: -4px;
+  left: -42px;
+}
+.everything i {
+  font-size: 18px;
+  position: relative;
+  top: 0px;
+  color: #0d6efd;
+  left: -1px;
+}
+.help-item:hover {
+  box-shadow: 5px 5px 10px rgb(0, 89, 255);
+  transition: 0.3s;
+}

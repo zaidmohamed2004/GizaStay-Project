@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking Details</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <style>
+      @media (min-width: 992px) {
+        .nav-search-box {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    </style>
+    <nav class="navbar bg-white border-bottom shadow-sm py-3 sticky-top">
+      <div
+        class="container-fluid px-4 d-flex align-items-center gap-3 flex-wrap position-relative"
+      >
+        <a
+          href="index.html"
+          class="navbar-brand fw-bold fs-3 text-primary order-1 me-0"
+          >Giza<span class="text-warning">Stay</span></a
+        >
+
+        <div
+          class="nav-search-box d-flex align-items-center bg-white border rounded-4 p-1 shadow-sm w-100 mx-auto order-3 order-lg-2 flex-lg-grow-1"
+          style="max-width: 580px"
+        >
+          <div
+            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill border-end"
+          >
+            <input
+              type="text"
+              id="navDest"
+              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
+              placeholder="Anywhere"
+              readonly
+            />
+          </div>
+          <div
+            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill border-end"
+          >
+            <input
+              type="text"
+              id="navDates"
+              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
+              placeholder="Any week"
+              readonly
+            />
+          </div>
+          <div
+            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill"
+          >
+            <input
+              type="text"
+              id="navGuests"
+              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
+              placeholder="Add guests"
+              readonly
+            />
+          </div>
+          <button
+            type="button"
+            class="btn btn-primary rounded-3 d-flex align-items-center justify-content-center flex-shrink-0 ms-1"
+            style="width: 38px; height: 38px"
+            data-bs-toggle="modal"
+            data-bs-target="#navSearchModal"
+          >
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 order-2 ms-auto order-lg-3">
+          <span class="small"
+            ><img src="https://flagcdn.com/w20/us.png" width="16" alt="USA" />
+            USD</span
+          >
+          <a href="helpcen.html" class="text-primary"
+            ><i class="bi bi-headset"></i
+          ></a>
+          <a href="profile.html" class="profile-link"
+            ><img
+              src="https://i.pravatar.cc/100?img=47"
+              width="32"
+              height="32"
+              class="rounded-circle"
+          /></a>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="modal fade"
+      id="navSearchModal"
+      tabindex="-1"
+      aria-labelledby="navSearchModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="navSearchModalLabel">
+              Search stays
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <label class="form-label fw-semibold" for="mDest"
+              >Destination</label
+            >
+            <input
+              type="text"
+              id="mDest"
+              class="form-control mb-1"
+              placeholder="e.g. Cairo, Barcelona, Nice"
+            />
+            <div id="mDestError" class="text-danger small mb-2 d-none">
+              Please enter a destination.
+            </div>
+            <label class="form-label fw-semibold" for="mCheckin"
+              >Check in</label
+            >
+            <input type="date" id="mCheckin" class="form-control mb-3" />
+            <label class="form-label fw-semibold" for="mCheckout"
+              >Check out</label
+            >
+            <input type="date" id="mCheckout" class="form-control mb-2" />
+            <div id="mDatesError" class="text-danger small mb-2 d-none">
+              Check-out date must be after check-in date.
+            </div>
+            <label class="form-label fw-semibold" for="mGuests">Guests</label>
+            <select id="mGuests" class="form-select">
+              <option value="1">1 guest</option>
+              <option value="2" selected>2 guests</option>
+              <option value="3">3 guests</option>
+              <option value="4">4+ guests</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="searchApply"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="container my-5">
+      <div class="d-flex align-items-center mb-5">
+        <div class="text-center" style="min-width: 110px">
+          <div
+            class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center mx-auto"
+            style="width: 40px; height: 40px"
+          >
+            1
+          </div>
+          <p class="mt-2 mb-0">Your selection</p>
+        </div>
+        <div class="flex-grow-1 bg-dark" style="height: 2px"></div>
+        <div class="text-center" style="min-width: 110px">
+          <div
+            class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto"
+            style="width: 40px; height: 40px"
+          >
+            2
+          </div>
+          <p class="mt-2 mb-0 fw-bold">Your details</p>
+        </div>
+        <div class="flex-grow-1 bg-secondary-subtle" style="height: 2px"></div>
+        <div class="text-center" style="min-width: 110px">
+          <div
+            class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center mx-auto"
+            style="width: 40px; height: 40px"
+          >
+            3
+          </div>
+          <p class="mt-2 mb-0 text-muted">Finish booking</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-8">
+          <h2 class="mb-4">Booking details</h2>
+
+          <h5>Your trip</h5>
+          <h4 id="bookingTripName" class="mb-3">Your selected stay</h4>
+          <div
+            class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3"
+          >
+            <div>
+              <p class="mb-1 text-muted">Dates</p>
+              <p class="fw-bold mb-0" id="bookingDates">Your selected dates</p>
+            </div>
+            <a
+              href="#"
+              class="text-decoration-underline text-dark edit-booking-link"
+              >Edit</a
+            >
+          </div>
+          <div
+            class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4"
+          >
+            <div>
+              <p class="mb-1 text-muted">Guests</p>
+              <p class="fw-bold mb-0">1 guest</p>
+            </div>
+            <a
+              href="#"
+              class="text-decoration-underline text-dark edit-booking-link"
+              >Edit</a
+            >
+          </div>
+
+          <div class="alert alert-light border">
+            Current booking total:
+            <strong id="bookingTotalNote">Calculated at payment</strong>
+          </div>
+          <form id="bookingForm" autocomplete="off">
+            <h4 class="mb-2">Guest Info</h4>
+            <p class="text-muted">
+              Guest names must match the valid ID which will be used at
+              check-in.
+            </p>
+
+            <div id="guestsContainer">
+              <div class="guestBlock mb-4">
+                <h5>Guest 1</h5>
+                <div class="row gy-3">
+                  <div class="col-12 col-md-6">
+                    <label class="form-label">First Name</label>
+                    <input
+                      type="text"
+                      class="form-control guestFirstName"
+                      placeholder="First Name"
+                    />
+                    <small class="text-danger"></small>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label class="form-label">Last Name</label>
+                    <input
+                      type="text"
+                      class="form-control guestLastName"
+                      placeholder="Last Name"
+                    />
+                    <small class="text-danger"></small>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label class="form-label">Email Address</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="guestEmail"
+                      placeholder="Email Address"
+                    />
+                    <small class="text-danger"></small>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <label class="form-label">Phone Number</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="guestPhone"
+                      placeholder="Phone Number"
+                    />
+                    <small class="text-danger"></small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="btn btn-outline-primary btn-sm mb-4"
+              id="addGuestBtn"
+            >
+              + Add New Guest (Optional)
+            </button>
+
+            <div class="mb-4">
+              <h5>
+                Special Requests
+                <span class="text-muted fw-normal">(optional)</span>
+              </h5>
+              <p class="text-muted">
+                The property will do its best, but cannot guarantee to fulfil
+                all requests
+              </p>
+              <textarea
+                class="form-control"
+                rows="4"
+                placeholder="Let the property know if there's anything they can assist you with."
+              ></textarea>
+            </div>
+
+            <div
+              class="d-flex justify-content-between align-items-center border-top pt-3 mb-3"
+            >
+              <div>
+                <h6 class="mb-1">Add travel insurance?</h6>
+                <p class="text-muted mb-0">Yes, add for 100$</p>
+                <p class="text-muted mb-0">Only available when booking</p>
+              </div>
+              <button type="button" class="btn btn-outline-dark">Add</button>
+            </div>
+
+            <div
+              class="d-flex justify-content-between align-items-center border-top pt-3 mb-3"
+            >
+              <div>
+                <h6 class="mb-1">Required for your trip</h6>
+                <p class="text-muted mb-0">Phone number</p>
+                <p class="text-muted mb-0">
+                  Add and confirm our phone number to get trip update
+                </p>
+              </div>
+              <button type="button" class="btn btn-outline-dark">Add</button>
+            </div>
+
+            <div class="border-top pt-3 mb-4">
+              <h6>Cancellation policy</h6>
+              <p>
+                <strong>Free cancellation before Aug 1.</strong> cancel before
+                check-in on Jul 10 for a partial refund.
+              </p>
+              <a href="#">Learn more</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg px-5">
+              Next step
+            </button>
+          </form>
+        </div>
+
+        <div class="col-lg-4 mt-5 mt-lg-0">
+          <div class="card p-3">
+            <img
+              id="bookingHotelImage"
+              src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=80"
+              class="rounded mb-3"
+              style="height: 150px; object-fit: cover"
+              alt="Selected hotel"
+            />
+
+            <h5 class="mb-1" id="bookingPropertyName">Selected hotel</h5>
+            <p class="text-muted" id="bookingPropertyLocation">&nbsp;</p>
+            <p>
+              <span class="badge bg-primary" id="bookingPropertyRating"
+                >5.0</span
+              >
+              <span class="fw-bold">Excellent</span>
+              <span class="text-muted" id="bookingPropertyReviews"></span>
+            </p>
+
+            <div class="row border rounded py-2 mx-0 my-3">
+              <div class="col-6 border-end">
+                <p class="mb-0 text-muted small">Check-in</p>
+                <p class="fw-bold mb-0" id="bookingCheckin">—</p>
+              </div>
+              <div class="col-6">
+                <p class="mb-0 text-muted small">Check-out</p>
+                <p class="fw-bold mb-0" id="bookingCheckout">—</p>
+              </div>
+            </div>
+
+            <p class="mb-0 text-muted">Rooms and Guests</p>
+            <p class="fw-bold" id="bookingGuests">1 room, 2 adults</p>
+
+            <hr />
+            <h6>Price details:</h6>
+            <div class="d-flex justify-content-between">
+              <span id="bookingNightsLabel">$0 x 0 nights</span
+              ><span id="bookingSubtotal">$0</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span>GizaStay service fee</span><span id="bookingFee">$0</span>
+            </div>
+            <hr />
+            <div class="d-flex justify-content-between fw-bold">
+              <span>Total <u>USD</u></span
+              ><span id="bookingTotal">$0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        <footer class="bg-dark text-white mt-5">
+      <div class="container-fluid px-5 py-4">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <h5 class="fw-bold">Giza<span class="text-warning">Stay</span></h5>
+
+            <p class="small">
+              We help you find and book the perfect stay from cozy guesthouses
+              to top hotels—with ease, trust, and the best deals.
+            </p>
+
+            <h6 class="text-primary">Download Our App</h6>
+
+            <div class="d-flex gap-2">
+              <a href="#" class="btn btn-secondary btn-sm">
+                <i class="bi bi-apple"></i>
+                App Store
+              </a>
+
+              <a href="#" class="btn btn-secondary btn-sm">
+                <i class="bi bi-google-play"></i>
+                Google Play
+              </a>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Explore</h6>
+
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Trending Destinations</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Summer Hotspots</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Winter Getaways</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Weekend Deals</a
+            >
+            <a href="#" class="d-block text-white text-decoration-none small"
+              >Family-Friendly Stays</a
+            >
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Property Types</h6>
+
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Hotels</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Apartments</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Villas</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Cabins</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Glamping</a
+            >
+            <a href="#" class="d-block text-white text-decoration-none small"
+              >Domes</a
+            >
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Support</h6>
+
+            <a
+              href="helpcen.html"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Help Centre</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Live Chat Support</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >FAQs</a
+            >
+            <a href="#" class="d-block text-white text-decoration-none small"
+              >Contact Us</a
+            >
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Get In Touch</h6>
+
+            <p class="small mb-2">+20 123 456 7890</p>
+            <p class="small">support@gizastay.com</p>
+
+            <div class="d-flex gap-3">
+              <a href="#" class="text-white">
+                <i class="bi bi-facebook"></i>
+              </a>
+
+              <a href="#" class="text-white">
+                <i class="bi bi-instagram"></i>
+              </a>
+
+              <a href="#" class="text-white">
+                <i class="bi bi-youtube"></i>
+              </a>
+
+              <a href="#" class="text-white">
+                <i class="bi bi-twitter"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-top border-secondary py-3">
+        <div class="container-fluid px-5">
+          <div
+            class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3"
+          >
+            <small> © 2025 GizaStay. All rights reserved. </small>
+
+            <div class="d-flex gap-2">
+              <span class="badge bg-light text-dark">VISA</span>
+              <span class="badge bg-light text-dark">AMEX</span>
+              <span class="badge bg-light text-dark">MC</span>
+              <span class="badge bg-light text-dark">Stripe</span>
+              <span class="badge bg-light text-dark">PayPal</span>
+              <span class="badge bg-light text-dark">G Pay</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/hotels.js"></script>
+    <script src="js/booking-details.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

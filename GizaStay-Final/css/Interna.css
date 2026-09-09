@@ -1,0 +1,54 @@
+.hero h1 {
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 31px;
+  position: relative;
+  left: -60px;
+  top: 23px;
+}
+.hero h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  position: relative;
+  left: -60px;
+  top: 23px;
+}
+.hero p {
+  line-height: 32px;
+  position: relative;
+  left: -60px;
+  top: 23px;
+}
+.hero h3 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  position: relative;
+  left: -60px;
+  top: 23px;
+}
+.hero h4 {
+  font-size: 18px;
+  line-height: 32px;
+  font-weight: 600;
+  position: relative;
+  left: -60px;
+  top: 33px;
+}
+.section-divider {
+  border: none;
+  border-top: 2px solid gray;
+  position: relative;
+  bottom: -23px;
+}
+.icon p {
+  color: #727272;
+  position: relative;
+  top: 14px;
+}
+.icon i {
+  position: relative;
+  left: -57px;
+  bottom: 6px;
+}

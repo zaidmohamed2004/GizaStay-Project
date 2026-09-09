@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log in or sign up</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+  </head>
+
+  <body class="bg-light">
+    <div
+      class="d-flex align-items-center justify-content-center"
+      style="min-height: 100vh"
+    >
+      <div class="card shadow-sm p-4" style="width: 100%; max-width: 380px">
+        <div id="emailStep">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h6 class="mb-0">Log in or sign up</h6>
+            <a href="index.html" class="text-dark text-decoration-none fs-5"
+              >&times;</a
+            >
+          </div>
+
+          <h4 class="text-center mb-4">Welcome to GizaStay</h4>
+
+          <label class="form-label">Email address</label>
+          <input
+            type="text"
+            class="form-control"
+            id="emailInput"
+            placeholder="Enter your email address"
+          />
+          <small class="text-danger"></small>
+
+          <button
+            type="button"
+            class="btn btn-primary w-100 mt-3 mb-4"
+            id="continueBtn"
+            disabled
+          >
+            Continue
+          </button>
+
+          <div class="d-flex align-items-center mb-4">
+            <hr class="flex-grow-1" />
+            <span class="text-muted px-2 small">or</span>
+            <hr class="flex-grow-1" />
+          </div>
+
+          <button
+            type="button"
+            class="btn btn-outline-secondary w-100 mb-2 d-flex align-items-center justify-content-center gap-2"
+          >
+            <i class="bi bi-google"></i> Continue with Google
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-secondary w-100 mb-2 d-flex align-items-center justify-content-center gap-2"
+          >
+            <i class="bi bi-apple"></i> Continue with Apple
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center gap-2"
+          >
+            <i class="bi bi-facebook"></i> Continue with Facebook
+          </button>
+        </div>
+
+        <div id="otpStep" class="d-none">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="#" id="backBtn" class="text-dark text-decoration-none">
+              <i class="bi bi-arrow-left"></i>
+            </a>
+            <h6 class="mb-0">Log in or sign up</h6>
+            <a href="index.html" class="text-dark text-decoration-none fs-5"
+              >&times;</a
+            >
+          </div>
+
+          <p class="text-center text-muted mb-4">
+            Enter verification code has sent
+            <span id="sentEmail" class="fw-bold text-dark"></span>
+          </p>
+
+          <div class="d-flex justify-content-center gap-2 mb-2">
+            <input
+              type="text"
+              maxlength="1"
+              class="form-control text-center otpDigit"
+              style="width: 55px"
+            />
+            <input
+              type="text"
+              maxlength="1"
+              class="form-control text-center otpDigit"
+              style="width: 55px"
+            />
+            <input
+              type="text"
+              maxlength="1"
+              class="form-control text-center otpDigit"
+              style="width: 55px"
+            />
+            <input
+              type="text"
+              maxlength="1"
+              class="form-control text-center otpDigit"
+              style="width: 55px"
+            />
+          </div>
+          <small
+            class="text-danger d-block text-center mb-3"
+            id="otpError"
+          ></small>
+
+          <button
+            type="button"
+            class="btn btn-primary w-100 mb-3"
+            id="verifyBtn"
+            disabled
+          >
+            Verify email
+          </button>
+
+          <p class="text-center text-muted small mb-1" id="resendText">
+            Didn't receive email? Check your spam folder or
+            <a
+              href="#"
+              id="resendLink"
+              class="text-muted"
+              style="pointer-events: none"
+              >request another code</a
+            >
+            in <span id="countdown">30</span> seconds.
+          </p>
+          <p class="text-center mb-0">
+            <a href="#" id="editEmailLink">Edit Email</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+        <footer class="bg-dark text-white mt-5">
+      <div class="container-fluid px-5 py-4">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <h5 class="fw-bold">Giza<span class="text-warning">Stay</span></h5>
+
+            <p class="small">
+              We help you find and book the perfect stay from cozy guesthouses
+              to top hotels—with ease, trust, and the best deals.
+            </p>
+
+            <h6 class="text-primary">Download Our App</h6>
+
+            <div class="d-flex gap-2">
+              <a href="#" class="btn btn-secondary btn-sm">
+                <i class="bi bi-apple"></i>
+                App Store
+              </a>
+
+              <a href="#" class="btn btn-secondary btn-sm">
+                <i class="bi bi-google-play"></i>
+                Google Play
+              </a>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Explore</h6>
+
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Trending Destinations</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Summer Hotspots</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Winter Getaways</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Weekend Deals</a
+            >
+            <a href="#" class="d-block text-white text-decoration-none small"
+              >Family-Friendly Stays</a
+            >
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Property Types</h6>
+
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Hotels</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Apartments</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Villas</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Cabins</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Glamping</a
+            >
+            <a href="#" class="d-block text-white text-decoration-none small"
+              >Domes</a
+            >
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Support</h6>
+
+            <a
+              href="helpcen.html"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Help Centre</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Live Chat Support</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >FAQs</a
+            >
+            <a href="#" class="d-block text-white text-decoration-none small"
+              >Contact Us</a
+            >
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Get In Touch</h6>
+
+            <p class="small mb-2">+20 123 456 7890</p>
+            <p class="small">support@gizastay.com</p>
+
+            <div class="d-flex gap-3">
+              <a href="#" class="text-white">
+                <i class="bi bi-facebook"></i>
+              </a>
+
+              <a href="#" class="text-white">
+                <i class="bi bi-instagram"></i>
+              </a>
+
+              <a href="#" class="text-white">
+                <i class="bi bi-youtube"></i>
+              </a>
+
+              <a href="#" class="text-white">
+                <i class="bi bi-twitter"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-top border-secondary py-3">
+        <div class="container-fluid px-5">
+          <div
+            class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3"
+          >
+            <small> © 2025 GizaStay. All rights reserved. </small>
+
+            <div class="d-flex gap-2">
+              <span class="badge bg-light text-dark">VISA</span>
+              <span class="badge bg-light text-dark">AMEX</span>
+              <span class="badge bg-light text-dark">MC</span>
+              <span class="badge bg-light text-dark">Stripe</span>
+              <span class="badge bg-light text-dark">PayPal</span>
+              <span class="badge bg-light text-dark">G Pay</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/login.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

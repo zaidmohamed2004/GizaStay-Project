@@ -1,0 +1,31 @@
+﻿.btn:hover {
+  --bs-btn-hover-bg: #ffc107;
+  --bs-btn-hover-border-color: #ffc107;
+  --bs-btn-hover-color: #000;
+}
+.btn-link:hover {
+  --bs-btn-hover-color: #ffc107;
+  --bs-btn-hover-bg: transparent;
+  --bs-btn-hover-border-color: transparent;
+}
+.form-control:hover,
+.form-select:hover {
+  border-color: #ffc107;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: #ffc107;
+  box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+}
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: rgba(255, 193, 7, 0.2);
+  color: #000;
+}
+
+#birthdayInput::-webkit-calendar-picker-indicator {
+  display: none;
+}
+#birthdayInput::-moz-calendar-picker-indicator {
+  display: none;
+}

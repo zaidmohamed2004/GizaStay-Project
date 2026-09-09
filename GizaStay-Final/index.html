@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GizaStay</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+      rel="stylesheet"
+    />
+    <script src="js/hotels.js" defer></script>
+    <script src="script.js" defer></script>
+    <style>
+      .hero-wrap {
+        position: relative;
+        border-radius: 0 0 28px 28px;
+        overflow: hidden;
+      }
+      .hero-wrap img {
+        width: 100%;
+        height: 460px;
+        object-fit: cover;
+        display: block;
+      }
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.5));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+      }
+      .hero-search-card {
+        margin-top: -46px;
+        position: relative;
+        z-index: 2;
+      }
+      .hero-pill-bar {
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(2px);
+      }
+      .hero-type-pill {
+        border: 0;
+        background: transparent;
+        color: #fff;
+        border-radius: 999px;
+        padding: 0.4rem 0.9rem;
+        font-size: 0.85rem;
+        white-space: nowrap;
+      }
+      .hero-type-pill.active {
+        background: #fff;
+        color: #1a1a1a;
+      }
+      .trust-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+      }
+      .trust-connector {
+        border-top: 2px dashed #cfe0ff;
+        position: relative;
+        top: -32px;
+      }
+      .dest-card {
+        position: relative;
+        border-radius: 1rem;
+        overflow: hidden;
+        height: 260px;
+        color: #fff;
+      }
+      .dest-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .dest-card .dest-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.75));
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1rem;
+      }
+      #weekend-deals-grid.owl-carousel .owl-stage-outer,
+      #homes-guests-grid.owl-carousel .owl-stage-outer {
+        padding: 4px 2px 8px;
+      }
+      .owl-carousel .owl-nav button.owl-prev,
+      .owl-carousel .owl-nav button.owl-next {
+        position: absolute;
+        top: -52px;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: #fff !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .owl-carousel .owl-nav button.owl-prev {
+        right: 46px;
+      }
+      .owl-carousel .owl-nav button.owl-next {
+        right: 0;
+      }
+      .owl-carousel .owl-nav button.disabled {
+        opacity: 0.35;
+      }
+      .sight-tile {
+        position: relative;
+        border-radius: 1rem;
+        overflow: hidden;
+        height: 200px;
+        color: #fff;
+      }
+      .sight-tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .sight-tile .sight-label {
+        position: absolute;
+        top: 0.75rem;
+        left: 0.75rem;
+        background: rgba(0, 0, 0, 0.55);
+        padding: 0.25rem 0.6rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+      .thing-card img {
+        border-radius: 0.75rem;
+        height: 150px;
+        width: 100%;
+        object-fit: cover;
+      }
+      .motion-hero {
+        position: relative;
+        border: 3px solid #0d6efd;
+        border-radius: 1rem;
+        overflow: hidden;
+        min-height: 320px;
+        color: #fff;
+      }
+      .motion-hero img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+      }
+      .motion-hero .motion-overlay {
+        position: relative;
+        z-index: 1;
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.1));
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+      }
+      .motion-thumb {
+        position: relative;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        height: 96px;
+        color: #fff;
+      }
+      .motion-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .motion-thumb .motion-thumb-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.25);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+      }
+      .testimonial-wrap {
+        position: relative;
+        min-height: 260px;
+      }
+      .testimonial-avatar {
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        object-fit: cover;
+      }
+      .testimonial-quote {
+        max-width: 480px;
+        margin: 0 auto;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <style>
+      @media (min-width: 992px) {
+        .nav-search-box {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    </style>
+    <nav class="navbar bg-white border-bottom shadow-sm py-3 sticky-top">
+      <div
+        class="container-fluid px-4 d-flex align-items-center gap-3 flex-wrap position-relative"
+      >
+        <a
+          href="index.html"
+          class="navbar-brand fw-bold fs-3 text-primary order-1 me-0"
+          >Giza<span class="text-warning">Stay</span></a
+        >
+
+        <div
+          class="nav-search-box d-flex align-items-center bg-white border rounded-4 p-1 shadow-sm w-100 mx-auto order-3 order-lg-2 flex-lg-grow-1"
+          style="max-width: 580px"
+        >
+          <div
+            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill border-end"
+          >
+            <input
+              type="text"
+              id="navDest"
+              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
+              placeholder="Anywhere"
+              readonly
+            />
+          </div>
+          <div
+            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill border-end"
+          >
+            <input
+              type="text"
+              id="navDates"
+              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
+              placeholder="Any week"
+              readonly
+            />
+          </div>
+          <div
+            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill"
+          >
+            <input
+              type="text"
+              id="navGuests"
+              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
+              placeholder="Add guests"
+              readonly
+            />
+          </div>
+          <button
+            type="button"
+            class="btn btn-primary rounded-3 d-flex align-items-center justify-content-center flex-shrink-0 ms-1"
+            style="width: 38px; height: 38px"
+            data-bs-toggle="modal"
+            data-bs-target="#navSearchModal"
+          >
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 order-2 ms-auto order-lg-3">
+          <span class="small"
+            ><img src="https://flagcdn.com/w20/us.png" width="16" alt="USA" />
+            USD</span
+          >
+          <a href="helpcen.html" class="text-primary"
+            ><i class="bi bi-headset"></i
+          ></a>
+          <a href="profile.html" class="profile-link"
+            ><img
+              src="https://i.pravatar.cc/100?img=47"
+              width="32"
+              height="32"
+              class="rounded-circle"
+          /></a>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="modal fade"
+      id="navSearchModal"
+      tabindex="-1"
+      aria-labelledby="navSearchModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="navSearchModalLabel">
+              Search stays
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <label class="form-label fw-semibold" for="mDest"
+              >Destination</label
+            >
+            <input
+              type="text"
+              id="mDest"
+              class="form-control mb-1"
+              placeholder="e.g. Cairo, Barcelona, Nice"
+            />
+            <div id="mDestError" class="text-danger small mb-2 d-none">
+              Please enter a destination.
+            </div>
+            <label class="form-label fw-semibold" for="mCheckin"
+              >Check in</label
+            >
+            <input type="date" id="mCheckin" class="form-control mb-3" />
+            <label class="form-label fw-semibold" for="mCheckout"
+              >Check out</label
+            >
+            <input type="date" id="mCheckout" class="form-control mb-2" />
+            <div id="mDatesError" class="text-danger small mb-2 d-none">
+              Check-out date must be after check-in date.
+            </div>
+            <label class="form-label fw-semibold" for="mGuests">Guests</label>
+            <select id="mGuests" class="form-select">
+              <option value="1">1 guest</option>
+              <option value="2" selected>2 guests</option>
+              <option value="3">3 guests</option>
+              <option value="4">4+ guests</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="searchApply"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="hero-wrap">
+      <img
+        src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&w=1800&q=85"
+        alt="Villa with pool at sunset"
+      />
+      <div class="hero-overlay">
+        <div>
+          <h1 class="display-5 fw-bold">Your Trip Starts Here</h1>
+          <p class="fs-5">Find unique stays across hotels, villas, and more.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <form
+        id="search-form"
+        class="hero-search-card rounded-4 shadow overflow-hidden mx-auto"
+        style="max-width: 900px"
+      >
+        <div class="hero-pill-bar d-flex flex-wrap justify-content-center gap-1 p-2">
+          <button type="button" class="hero-type-pill active"><i class="bi bi-building me-1"></i>Hotel</button>
+          <button type="button" class="hero-type-pill"><i class="bi bi-house-door me-1"></i>House</button>
+          <button type="button" class="hero-type-pill"><i class="bi bi-signpost-split me-1"></i>Guest House</button>
+          <button type="button" class="hero-type-pill"><i class="bi bi-buildings me-1"></i>Apartments</button>
+        </div>
+        <div class="bg-white p-3">
+          <div class="row g-2 align-items-end">
+            <div class="col-6 col-md-4">
+              <label class="form-label fw-semibold text-dark small d-block border-bottom border-primary border-2 pb-2 mb-2" for="destination">Location</label>
+              <input
+                id="destination"
+                class="form-control border-0 shadow-none p-0"
+                placeholder="Where are you going?"
+              />
+              <div id="destination-error" class="text-danger small d-none">
+                Please enter a destination.
+              </div>
+            </div>
+            <div class="col-6 col-md-2">
+              <label class="form-label fw-semibold text-dark small d-block border-bottom border-primary border-2 pb-2 mb-2" for="checkin">Check In</label>
+              <input id="checkin" type="date" class="form-control border-0 shadow-none p-0" />
+            </div>
+            <div class="col-6 col-md-2">
+              <label class="form-label fw-semibold text-dark small d-block border-bottom border-primary border-2 pb-2 mb-2" for="checkout">Check Out</label>
+              <input id="checkout" type="date" class="form-control border-0 shadow-none p-0" />
+            </div>
+            <div class="col-6 col-md-2">
+              <label class="form-label fw-semibold text-dark small d-block border-bottom border-primary border-2 pb-2 mb-2" for="guests">Rooms and Guests</label>
+              <select id="guests" class="form-select border-0 shadow-none p-0">
+                <option value="1">1 room, 1 adult</option>
+                <option value="2" selected>1 room, 2 adults</option>
+                <option value="3">1 room, 3 adults</option>
+                <option value="4">2 rooms, 4 adults</option>
+              </select>
+            </div>
+            <div class="col-md-2 d-grid">
+              <button class="btn btn-primary rounded-3">
+                <i class="bi bi-search me-1"></i>Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <main class="container py-5">
+      <section class="text-center py-4">
+        <h2 class="fw-bold mb-4">Why Travellers Trust GizaStay</h2>
+        <div class="row g-4 justify-content-center align-items-start">
+          <div class="col-12 col-md-4">
+            <div class="bg-primary-subtle trust-icon d-inline-flex align-items-center justify-content-center mb-3">
+              <i class="bi bi-currency-dollar fs-3 text-primary"></i>
+            </div>
+            <h6 class="fw-bold">No hidden fees</h6>
+            <p class="text-secondary small">Transparent pricing with no hidden fees.</p>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="bg-primary-subtle trust-icon d-inline-flex align-items-center justify-content-center mb-3">
+              <i class="bi bi-shield-check fs-3 text-primary"></i>
+            </div>
+            <h6 class="fw-bold">Instant booking</h6>
+            <p class="text-secondary small">Get confirmation right after you reserve.</p>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="bg-primary-subtle trust-icon d-inline-flex align-items-center justify-content-center mb-3">
+              <i class="bi bi-file-earmark-text fs-3 text-primary"></i>
+            </div>
+            <h6 class="fw-bold">Flexibility</h6>
+            <p class="text-secondary small">Flexible options with free cancellation on many listings.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-4">
+        <h2 class="fw-bold mb-3">Trending Destinations</h2>
+        <div class="row g-3" id="trending-destinations-grid"></div>
+      </section>
+
+      <section class="py-4">
+        <h2 class="fw-bold mb-3">Deals for the Weekend</h2>
+        <div class="owl-carousel owl-theme" id="weekend-deals-grid"></div>
+      </section>
+
+      <section class="py-4">
+        <h2 class="fw-bold mb-3">Travel more, spend less</h2>
+        <div class="row g-3" id="travel-perks-grid"></div>
+      </section>
+
+      <section class="py-4">
+        <h2 class="fw-bold mb-3">Top Sights to See</h2>
+        <div class="row g-3" id="top-sights-grid"></div>
+      </section>
+
+      <section class="py-4">
+        <h2 class="fw-bold mb-3">Top Things to Do in Barcelona</h2>
+        <div class="row g-3">
+          <div class="col-6 col-md-4 col-lg-2 thing-card">
+            <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=500&q=80" alt="Sagrada Familia">
+            <p class="small mt-2 mb-0">Sagrada Familia</p>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2 thing-card">
+            <img src="https://images.unsplash.com/photo-1558642084-fd07fae5282e?auto=format&fit=crop&w=500&q=80" alt="Park Guell">
+            <p class="small mt-2 mb-0">Park Guell</p>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2 thing-card">
+            <img src="https://images.unsplash.com/photo-1605216663980-b7ca6e9f2451?auto=format&fit=crop&w=500&q=80" alt="Casa Mila">
+            <p class="small mt-2 mb-0">Casa Mila</p>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2 thing-card">
+            <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=500&q=80" alt="Sacred Heart Temple">
+            <p class="small mt-2 mb-0">Sacred Heart Temple</p>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2 thing-card">
+            <img src="https://images.unsplash.com/photo-1587467512961-120760940315?auto=format&fit=crop&w=500&q=80" alt="Arc de Triomf">
+            <p class="small mt-2 mb-0">Arc de Triomf</p>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2 thing-card">
+            <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=500&q=80" alt="Casa Batllo">
+            <p class="small mt-2 mb-0">Casa Batllo</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-4">
+        <h2 class="fw-bold mb-3">Explore GizaStay in Motion</h2>
+        <div class="row g-3">
+          <div class="col-lg-8">
+            <div class="motion-hero">
+              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="Sunset beach">
+              <div class="motion-overlay">
+                <h3 class="fw-bold">Step Into a world<br>of Luxury</h3>
+                <p class="small" style="max-width: 380px">
+                  Immerse yourself in captivating visuals from our most iconic and indulgent destinations.
+                </p>
+                <button type="button" class="btn btn-primary align-self-start" onclick="alert('Video gallery is coming soon!')">Explore All Videos</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="d-flex flex-column gap-3 h-100">
+              <div class="motion-thumb flex-fill" role="button" onclick="alert('Video gallery is coming soon!')">
+                <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=500&q=80" alt="Maldives, Asia">
+                <div class="motion-thumb-overlay">
+                  <i class="bi bi-play-circle-fill fs-3"></i>
+                  <small class="fw-semibold">Maldives, Asia</small>
+                  <span class="text-warning small"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i></span>
+                </div>
+              </div>
+              <div class="motion-thumb flex-fill" role="button" onclick="alert('Video gallery is coming soon!')">
+                <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?auto=format&fit=crop&w=500&q=80" alt="Phuket, Thailand">
+                <div class="motion-thumb-overlay">
+                  <i class="bi bi-play-circle-fill fs-3"></i>
+                  <small class="fw-semibold">Phuket, Thailand</small>
+                  <span class="text-warning small"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i></span>
+                </div>
+              </div>
+              <div class="motion-thumb flex-fill" role="button" onclick="alert('Video gallery is coming soon!')">
+                <img src="https://images.unsplash.com/photo-1542259009477-d625272157b7?auto=format&fit=crop&w=500&q=80" alt="Maui, Hawaii, USA">
+                <div class="motion-thumb-overlay">
+                  <i class="bi bi-play-circle-fill fs-3"></i>
+                  <small class="fw-semibold">Maui, Hawaii, USA</small>
+                  <span class="text-warning small"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="fw-bold mb-0">Homes Guests Love</h2>
+          <a href="searchgrid.html" class="btn btn-outline-primary btn-sm">See all</a>
+        </div>
+        <div class="owl-carousel owl-theme" id="homes-guests-grid"></div>
+      </section>
+
+      <section class="bg-white rounded-4 p-4 p-md-5 testimonial-wrap">
+        <p class="text-secondary text-center small">Let's see what people think of GizaStay</p>
+        <img src="https://randomuser.me/api/portraits/women/12.jpg" width="46" height="46" class="testimonial-avatar" style="top: 10%; left: 8%" alt="Guest">
+        <img src="https://randomuser.me/api/portraits/men/47.jpg" width="70" height="70" class="testimonial-avatar" style="top: 0; left: 50%; transform: translateX(-50%)" alt="Ethan Roginho">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" width="46" height="46" class="testimonial-avatar" style="top: 8%; right: 8%" alt="Guest">
+        <img src="https://randomuser.me/api/portraits/men/22.jpg" width="46" height="46" class="testimonial-avatar" style="top: 42%; left: 0" alt="Guest">
+        <img src="https://randomuser.me/api/portraits/men/8.jpg" width="46" height="46" class="testimonial-avatar" style="top: 40%; right: 2%" alt="Guest">
+        <img src="https://randomuser.me/api/portraits/women/33.jpg" width="46" height="46" class="testimonial-avatar" style="bottom: 6%; left: 20%" alt="Guest">
+        <img src="https://randomuser.me/api/portraits/men/56.jpg" width="46" height="46" class="testimonial-avatar" style="bottom: 4%; left: 50%; transform: translateX(-50%)" alt="Guest">
+        <div class="testimonial-quote position-relative">
+          <p class="fs-5 fst-italic">
+            <i class="bi bi-quote"></i>
+            This place is exactly like the picture posted on GizaStay. Great service, we had a great stay!
+            <i class="bi bi-quote"></i>
+          </p>
+          <h5 class="fw-bold mb-0">Ethan Roginho</h5>
+          <p class="text-secondary small">
+            <img src="https://flagcdn.com/w20/my.png" width="16" alt="Malaysia" />
+            Malaysia
+          </p>
+        </div>
+      </section>
+
+      <section
+        class="bg-primary text-white rounded-4 p-4 p-md-5 text-center mt-5"
+      >
+        <h3 class="fw-bold">Get exclusive deals</h3>
+        <p>Subscribe to receive the latest GizaStay offers.</p>
+        <form id="newsletter-form" class="d-flex gap-2 justify-content-center">
+          <input
+            id="newsletter-email"
+            type="email"
+            class="form-control"
+            style="max-width: 320px"
+            placeholder="you@example.com"
+            required
+          />
+          <button class="btn btn-warning">Subscribe</button>
+        </form>
+        <p id="newsletter-success" class="mt-3 d-none">
+          Thanks! You are subscribed.
+        </p>
+      </section>
+    </main>
+
+    <footer class="bg-dark text-white mt-5">
+      <div class="container-fluid px-5 py-4">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <h5 class="fw-bold">Giza<span class="text-warning">Stay</span></h5>
+
+            <p class="small">
+              We help you find and book the perfect stay from cozy guesthouses
+              to top hotels—with ease, trust, and the best deals.
+            </p>
+
+            <h6 class="text-primary">Download Our App</h6>
+
+            <div class="d-flex gap-2">
+              <a href="#" class="btn btn-secondary btn-sm">
+                <i class="bi bi-apple"></i>
+                App Store
+              </a>
+
+              <a href="#" class="btn btn-secondary btn-sm">
+                <i class="bi bi-google-play"></i>
+                Google Play
+              </a>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Explore</h6>
+
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Trending Destinations</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Summer Hotspots</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Winter Getaways</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Weekend Deals</a
+            >
+            <a href="#" class="d-block text-white text-decoration-none small"
+              >Family-Friendly Stays</a
+            >
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Property Types</h6>
+
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Hotels</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Apartments</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Villas</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Cabins</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Glamping</a
+            >
+            <a href="#" class="d-block text-white text-decoration-none small"
+              >Domes</a
+            >
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Support</h6>
+
+            <a
+              href="helpcen.html"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Help Centre</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Live Chat Support</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >FAQs</a
+            >
+            <a href="#" class="d-block text-white text-decoration-none small"
+              >Contact Us</a
+            >
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Get In Touch</h6>
+
+            <p class="small mb-2">+20 123 456 7890</p>
+            <p class="small">support@gizastay.com</p>
+
+            <div class="d-flex gap-3">
+              <a href="#" class="text-white">
+                <i class="bi bi-facebook"></i>
+              </a>
+
+              <a href="#" class="text-white">
+                <i class="bi bi-instagram"></i>
+              </a>
+
+              <a href="#" class="text-white">
+                <i class="bi bi-youtube"></i>
+              </a>
+
+              <a href="#" class="text-white">
+                <i class="bi bi-twitter"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-top border-secondary py-3">
+        <div class="container-fluid px-5">
+          <div
+            class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3"
+          >
+            <small> © 2025 GizaStay. All rights reserved. </small>
+
+            <div class="d-flex gap-2">
+              <span class="badge bg-light text-dark">VISA</span>
+              <span class="badge bg-light text-dark">AMEX</span>
+              <span class="badge bg-light text-dark">MC</span>
+              <span class="badge bg-light text-dark">Stripe</span>
+              <span class="badge bg-light text-dark">PayPal</span>
+              <span class="badge bg-light text-dark">G Pay</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+      // Deals for the Weekend + Homes Guests Love sliders, once script.js
+      // has rendered the cards into them.
+      $(window).on("load", function () {
+        $(".owl-carousel").owlCarousel({
+          items: 4,
+          margin: 20,
+          nav: true,
+          navText: [
+            '<i class="bi bi-chevron-left"></i>',
+            '<i class="bi bi-chevron-right"></i>',
+          ],
+          responsive: {
+            0: {
+              items: 1,
+            },
+            480: {
+              items: 1,
+            },
+            768: {
+              items: 4,
+            },
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

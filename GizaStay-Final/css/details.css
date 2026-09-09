@@ -1,0 +1,41 @@
+.host-badge img{width:36px;height:36px;border-radius:50%}
+
+.cal-grid span{cursor:pointer}
+
+#navSearch:hover{box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.host-link:hover{color:#0d6efd}
+.profile-menu img{width:28px;height:28px;border-radius:50%}
+
+.footer-cols a{display:block;font-size:12.5px;color:#444;text-decoration:none;padding:3px 0}
+.footer-cols a:hover{color:#0d6efd;text-decoration:underline}
+.footer-bottom a{color:#444;text-decoration:none}
+.footer-bottom a:hover{text-decoration:underline}
+.foot-btn:hover{color:#0d6efd}
+
+.overall-left .bars span{width:10px;background:#222;border-radius:3px;display:block}
+.review-card img{width:32px;height:32px;border-radius:50%}
+
+.policy-table{border:1px solid #eee;border-radius:12px;overflow:hidden;margin-top:8px}
+.policy-row{display:grid;grid-template-columns:220px 1fr;border-bottom:1px solid #f0f0f0}
+.policy-row:last-child{border:0}
+.policy-row>div{padding:10px 12px;font-size:12px}
+.policy-row>div:first-child{font-weight:700;background:#fafafa}
+.policy-row small{color:#555}
+
+.s-card img{width:100%;height:140px;object-fit:cover}
+.s-card ul li::before{content:"\2022  ";color:#0d6efd}
+.amen-list-full i{margin-right:8px;color:#0d6efd}
+
+.room-img{position:relative;min-width:170px;max-width:170px;height:150px}
+.room-img img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.room-info{flex:1;min-width:0}
+.room-rate span{background:#dcfce7;color:#15803d;font-weight:800;border-radius:6px;padding:1px 6px;margin-left:4px;font-size:11px}
+.room-price{min-width:130px;max-width:130px;text-align:right;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;border-left:1px solid #f0f0f0;padding-left:10px}
+.room-price.unavailable{justify-content:center;align-items:flex-end;color:#999}
+@media(max-width:768px){.policy-row{grid-template-columns:1fr}.room-img,.room-price{min-width:100%;max-width:100%}.room-price{border:0;padding:0;text-align:left}}
+.row-cols-7 > *{flex:0 0 auto;width:14.2857%}
+
+#topTabs .nav-link:hover{color:#fd7e14 !important}
+
+button:not(:disabled):hover{background-color:#fd7e14 !important;border-color:#fd7e14 !important;color:#fff !important}
+input:hover,select:hover,textarea:hover{border-color:#fd7e14 !important;box-shadow:0 0 0 .25rem rgba(253,126,20,.25) !important}

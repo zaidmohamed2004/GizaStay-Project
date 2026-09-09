@@ -1,0 +1,297 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #ffffff;
+  color: #1a1a2e;
+}
+
+.account-page {
+  padding: 40px 0;
+}
+
+.account-wrapper {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.account-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+}
+
+.user-info .avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-info h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: #1a1a2e;
+}
+
+.user-info p {
+  font-size: 13px;
+  color: #8a8a99;
+  margin: 0;
+}
+
+.account-sidebar hr {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 12px 0;
+}
+
+.account-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #1a1a2e;
+  font-size: 15px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.nav-item i:first-child {
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
+}
+
+.nav-item .nav-caret {
+  margin-left: auto;
+  font-size: 12px;
+}
+
+.nav-item:hover {
+  background: #f4f6ff;
+}
+
+.nav-item.active {
+  background: #eaf0ff;
+  color: #4169f1;
+  font-weight: 600;
+}
+
+.nav-item.active i {
+  color: #4169f1;
+}
+
+.account-content {
+  flex: 1;
+}
+
+.account-content h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #1a1a2e;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #6b6b7b;
+  margin-bottom: 24px;
+}
+
+.feedback-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feedback-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #1a1a2e;
+}
+
+.feedback-item .icon {
+  font-size: 18px;
+  color: #1a1a2e;
+  width: 22px;
+  text-align: center;
+}
+
+.feedback-item .label {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.feedback-item .arrow {
+  margin-left: auto;
+  color: #8a8a99;
+}
+
+.feedback-modal {
+  border-radius: 12px;
+  border: none;
+  padding: 24px;
+}
+
+.feedback-question {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 24px;
+}
+
+.rating-scale {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.rating-circle {
+  width: 48px;
+  height: 48px;
+  border: 1px solid #c9c9d6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: #1a1a2e;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.rating-circle input {
+  display: none;
+}
+
+.rating-circle:hover {
+  border-color: #4169f1;
+}
+
+.rating-circle input:checked + span {
+  color: #fff;
+}
+
+.rating-circle:has(input:checked) {
+  background: #4169f1;
+  border-color: #4169f1;
+}
+
+.feedback-label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
+
+.feedback-textarea,
+.feedback-email {
+  border: 1px solid #d8d8e0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  margin-bottom: 16px;
+  resize: none;
+}
+
+.feedback-textarea:focus,
+.feedback-email:focus {
+  border-color: #4169f1;
+  box-shadow: none;
+}
+
+.feedback-hint {
+  font-size: 12px;
+  color: #8a8a99;
+  margin-bottom: 10px;
+}
+
+.feedback-footer {
+  border-top: none;
+  padding: 0;
+  margin-top: 8px;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.btn-not-now {
+  border: 1px solid #d8d8e0;
+  border-radius: 20px;
+  background: #fff;
+  color: #1a1a2e;
+  padding: 8px 20px;
+  font-size: 14px;
+}
+
+.btn-not-now:hover {
+  background: #f4f4f6;
+}
+
+.btn-send-feedback {
+  border: none;
+  border-radius: 20px;
+  background-color: #4169f1;
+  color: #fff;
+  padding: 8px 22px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.btn-send-feedback:hover {
+  background-color: rgb(8, 8, 8);
+  color: white;
+}
+
+.thank-you-text {
+  text-align: center;
+  font-size: 16px;
+  color: #1a1a2e;
+  padding: 40px 0;
+  margin: 0;
+}
+
+.logout-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 32px;
+  color: #e74c3c;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  right: -14px;
+}
+
+.logout-link:hover {
+  text-decoration: underline;
+}
+.navbar {
+  width: 100%;
+  position: relative;
+  top: -38px;
+}

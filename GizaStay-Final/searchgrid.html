@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GizaStay | Find your stay</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body class="bg-light">
+    <style>
+      @media (min-width: 992px) {
+        .nav-search-box {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    </style>
+    <nav class="navbar bg-white border-bottom shadow-sm py-3 sticky-top">
+      <div
+        class="container-fluid px-4 d-flex align-items-center gap-3 flex-wrap position-relative"
+      >
+        <a
+          href="index.html"
+          class="navbar-brand fw-bold fs-3 text-primary order-1 me-0"
+          >Giza<span class="text-warning">Stay</span></a
+        >
+
+        <div
+          class="nav-search-box d-flex align-items-center bg-white border rounded-4 p-1 shadow-sm w-100 mx-auto order-3 order-lg-2 flex-lg-grow-1"
+          style="max-width: 580px"
+        >
+          <div
+            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill border-end"
+          >
+            <input
+              type="text"
+              id="navDest"
+              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
+              placeholder="Search destinations"
+            />
+          </div>
+          <div
+            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill border-end"
+          >
+            <input
+              type="text"
+              id="navDates"
+              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
+              placeholder="Any week"
+              readonly
+            />
+          </div>
+          <div
+            class="d-flex align-items-center justify-content-between px-3 py-1 flex-fill"
+          >
+            <input
+              type="text"
+              id="navGuests"
+              class="form-control border-0 p-0 fw-bold shadow-none text-dark bg-transparent"
+              placeholder="Add guests"
+              readonly
+            />
+          </div>
+          <button
+            type="button"
+            class="btn btn-primary rounded-3 d-flex align-items-center justify-content-center flex-shrink-0 ms-1"
+            style="width: 38px; height: 38px"
+            data-bs-toggle="modal"
+            data-bs-target="#navSearchModal"
+          >
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 order-2 ms-auto order-lg-3">
+          <span class="small"
+            ><img src="https://flagcdn.com/w20/us.png" width="16" alt="USA" />
+            USD</span
+          >
+          <a href="helpcen.html" class="text-primary"
+            ><i class="bi bi-headset"></i
+          ></a>
+          <a href="profile.html" class="profile-link"
+            ><img
+              src="https://i.pravatar.cc/100?img=47"
+              width="32"
+              height="32"
+              class="rounded-circle"
+          /></a>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="modal fade"
+      id="navSearchModal"
+      tabindex="-1"
+      aria-labelledby="navSearchModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="navSearchModalLabel">
+              Search stays
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <label class="form-label fw-semibold" for="mDest"
+              >Destination</label
+            >
+            <input
+              type="text"
+              id="mDest"
+              class="form-control mb-1"
+              placeholder="e.g. Cairo, Barcelona, Nice"
+            />
+            <div id="mDestError" class="text-danger small mb-2 d-none">
+              Please enter a destination.
+            </div>
+            <label class="form-label fw-semibold" for="mCheckin"
+              >Check in</label
+            >
+            <input type="date" id="mCheckin" class="form-control mb-3" />
+            <label class="form-label fw-semibold" for="mCheckout"
+              >Check out</label
+            >
+            <input type="date" id="mCheckout" class="form-control mb-2" />
+            <div id="mDatesError" class="text-danger small mb-2 d-none">
+              Check-out date must be after check-in date.
+            </div>
+            <label class="form-label fw-semibold" for="mGuests">Guests</label>
+            <select id="mGuests" class="form-select">
+              <option value="1">1 guest</option>
+              <option value="2" selected>2 guests</option>
+              <option value="3">3 guests</option>
+              <option value="4">4+ guests</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="searchApply"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<section class="container mt-5">
+      <div class="row g-4">
+
+      <aside class="col-12 col-lg-3 align-items-center text-center">
+        <div class="w-100">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d884021.9961831894!2d31.258493000000005!3d30.059488000000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fa60b21beeb%3A0x79dfb296e8423bba!2sCairo%2C%20Cairo%20Governorate!5e0!3m2!1sen!2seg!4v1787671984810!5m2!1sen!2seg"
+            width="100%"
+            height="200"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+          ></iframe>
+        </div>
+
+        <div class="border border-black rounded-2 w-100">
+          <div class="d-flex justify-content-between align-items-center">
+            <p class="ps-3 mt-1 mb-0">filter by:</p>
+            <button type="button" id="clearFilters" class="btn btn-link px-3 mt-1 mb-0 text-dark text-decoration-none">clear</button>
+          </div>
+          <hr />
+          <div>
+            <div class="d-flex justify-content-between">
+              <p class="ms-2">Type of Place</p>
+              <i class="bi bi-arrow-up-short h3 mx-2"></i>
+            </div>
+            <div class="d-flex justify-content-center align-items-center px-2">
+              <div class="d-flex justify-content-center align-items-center border border-black rounded-3 w-100 gap-2 p-2">
+                <button class="m-0 btn p-0 fw-bold flex-fill text-nowrap fs-6">Any type</button>
+                <span class="text-muted flex-shrink-0">|</span>
+                <button class="text-muted m-0 btn p-0 flex-fill text-nowrap fs-6">Room</button>
+                <span class="text-muted flex-shrink-0">|</span>
+                <button class="text-muted m-0 btn p-0 flex-fill text-nowrap fs-6">Entire home</button>
+              </div>
+            </div>
+          </div>
+          <hr class="w-75 ms-5" />
+          <div class="container overflow-hidden">
+            <h5 class="text-start">Price Range</h5>
+            <p class="text-start" style="font-size: 10px">
+              Nightly prices including fees and taxes
+            </p>
+            <img
+              src="price-range.svg"
+              class="img-fluid w-100"
+              alt="Price range"
+            />
+            <div class="d-flex justify-content-between container">
+              <p class="text-muted" style="font-size: 12.5px">Minimum</p>
+              <p class="text-muted" style="font-size: 12.5px">Maximum</p>
+            </div>
+            <div class="price-dual">
+              <div class="position-absolute top-50 start-0 end-0 translate-middle-y bg-light border rounded" style="height:4px"></div>
+              <div id="priceFill" class="position-absolute top-50 translate-middle-y bg-dark rounded" style="height:4px;left:0;width:100%"></div>
+              <input type="range" id="priceMax" min="50" max="250" step="10" value="250" aria-label="Maximum price">
+            </div>
+            <div class="d-flex justify-content-between gap-2 mt-2">
+              <div class="border rounded-2 px-3 py-2 text-muted">$ 50 <small>(min)</small></div>
+              <button type="button" id="maxBtn" class="btn border rounded-2" title="Click to lower maximum">$ <span id="maxBox">250+</span></button>
+            </div>
+          </div>
+          <hr class="w-75 ms-5" />
+          <div class="d-flex justify-content-around">
+            <b>Rooms and Beds</b>
+            <button type="button" id="roomsToggle" class="collapse-toggle btn btn-link text-dark text-decoration-none p-0" data-bs-toggle="collapse" data-bs-target="#roomsBedsBody" aria-expanded="true" aria-controls="roomsBedsBody" title="Show / hide"><i class="bi bi-chevron-up"></i></button>
+          </div>
+          <div class="collapse show" id="roomsBedsBody">
+          <br /><br />
+          <div class="d-flex justify-content-around">
+            <div>
+              <p>Bedrooms</p>
+              <p>Beds</p>
+              <p>Bathrooms</p>
+            </div>
+            <div>
+              <div class="d-inline-flex align-items-center p-1 gap-3">
+                <button class="btn btn-link text-secondary p-0 border-0" type="button">
+                  <i class="bi bi-dash-circle fs-5"></i>
+                </button>
+                <span class="fw-bold px-1">1</span>
+                <button class="btn btn-link text-dark p-0 border-0" type="button">
+                  <i class="bi bi-plus-circle fs-5"></i>
+                </button>
+              </div>
+              <br />
+              <div class="d-inline-flex align-items-center gap-3">
+                <button class="btn btn-link text-secondary p-0 border-0" type="button">
+                  <i class="bi bi-dash-circle fs-5"></i>
+                </button>
+                <span class="fw-bold px-1">1</span>
+                <button class="btn btn-link text-dark p-0 border-0" type="button">
+                  <i class="bi bi-plus-circle fs-5"></i>
+                </button>
+              </div>
+              <br />
+              <div class="d-inline-flex align-items-center p-1 gap-1">
+                <button class="btn btn-link text-secondary p-0 border-0" type="button">
+                  <i class="bi bi-dash-circle fs-5"></i>
+                </button>
+                <span class="fw-bold px-1 h6">Any</span>
+                <button class="btn btn-link text-dark p-0 border-0" type="button">
+                  <i class="bi bi-plus-circle fs-5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <br />
+          <br />
+          </div>
+          <hr />
+          <br />
+          <div class="d-flex justify-content-around">
+            <div>
+              <b>Room Size</b>
+            </div>
+            <div>
+              <button type="button" id="sizeToggle" class="collapse-toggle btn btn-link text-dark text-decoration-none p-0" data-bs-toggle="collapse" data-bs-target="#sizeBody" aria-expanded="true" aria-controls="sizeBody" title="Show / hide"><i class="bi bi-chevron-up"></i></button>
+            </div>
+          </div>
+          <div class="collapse show" id="sizeBody">
+          <br />
+          <div class="border-2 ps-3 d-flex flex-column gap-2">
+            <div class="form-check w-100">
+              <input class="form-check-input" type="checkbox" id="sizeSmall" />
+              <label class="form-check-label ms-1" for="sizeSmall">
+                Small (&le; 25 m&sup2;)
+              </label>
+            </div>
+            <div class="form-check w-100">
+              <input class="form-check-input" type="checkbox" id="sizeMedium" checked />
+              <label class="form-check-label ms-1" for="sizeMedium">
+                Medium (26&ndash;40 m&sup2;)
+              </label>
+            </div>
+            <div class="form-check w-100">
+              <input class="form-check-input" type="checkbox" id="sizeLarge" />
+              <label class="form-check-label ms-1" for="sizeLarge">
+                Large (&ge; 41 m&sup2;)
+              </label>
+            </div>
+          </div>
+          <br />
+          </div>
+          <hr />
+          <br />
+          <div class="border-2 ps-3 pe-2 py-2 w-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h6 class="fw-bold m-0 text-dark">Distance From Centre</h6>
+              <button type="button" id="distToggle" class="collapse-toggle btn btn-link text-dark text-decoration-none p-0" data-bs-toggle="collapse" data-bs-target="#distBody" aria-expanded="true" aria-controls="distBody" title="Show / hide"><i class="bi bi-chevron-up"></i></button>
+            </div>
+            <div class="collapse show" id="distBody">
+            <div class="d-flex justify-content-between align-items-center mb-1 text-secondary small fw-semibold">
+              <span>1 km</span>
+              <span>10+ km</span>
+            </div>
+            <input type="range" class="form-range" min="1" max="10" value="1" id="customRange" />
+          </div>
+          </div>
+          <hr />
+          <br />
+          <br />
+          <div class="p-2 w-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h6 class="fw-bold m-0 text-dark">Guest Review Score</h6>
+              <button type="button" id="scoreToggle" class="collapse-toggle btn btn-link text-dark text-decoration-none p-0" data-bs-toggle="collapse" data-bs-target="#scoreBody" aria-expanded="true" aria-controls="scoreBody" title="Show / hide"><i class="bi bi-chevron-up"></i></button>
+            </div>
+            <div class="collapse show" id="scoreBody">
+            <div class="d-flex flex-column gap-2">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="score5" checked />
+                <label class="form-check-label fw-semibold text-dark ms-1" for="score5">5.0 Excellent</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="score4" checked />
+                <label class="form-check-label fw-semibold text-dark ms-1" for="score4">4.0+ Very good</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="score3" checked />
+                <label class="form-check-label fw-semibold text-dark ms-1" for="score3">3.0+ Good</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="score2" />
+                <label class="form-check-label fw-semibold text-dark ms-1" for="score2">2.0+ Fair</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="score1" />
+                <label class="form-check-label fw-semibold text-dark ms-1" for="score1">&lt; 2.0 Poor</label>
+              </div>
+            </div>
+          </div>
+          <br />
+          </div>
+          <hr />
+          <div class="p-2 w-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h6 class="fw-bold m-0 text-dark">Property Classification</h6>
+              <button type="button" id="classToggle" class="collapse-toggle btn btn-link text-dark text-decoration-none p-0" data-bs-toggle="collapse" data-bs-target="#classBody" aria-expanded="true" aria-controls="classBody" title="Show / hide"><i class="bi bi-chevron-up"></i></button>
+            </div>
+            <div class="collapse show" id="classBody">
+            <div class="d-flex flex-column gap-2">
+              <div class="form-check d-flex align-items-center">
+                <input class="form-check-input my-0" type="checkbox" id="star5" checked />
+                <label class="form-check-label ms-2 d-flex align-items-center gap-2" for="star5">
+                  <span class="text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+                  <span class="fw-semibold text-dark">5-star</span>
+                </label>
+              </div>
+              <div class="form-check d-flex align-items-center">
+                <input class="form-check-input my-0" type="checkbox" id="star4" checked />
+                <label class="form-check-label ms-2 d-flex align-items-center gap-2" for="star4">
+                  <span class="text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i></span>
+                  <span class="fw-semibold text-dark">4-star</span>
+                </label>
+              </div>
+              <div class="form-check d-flex align-items-center">
+                <input class="form-check-input my-0" type="checkbox" id="star3" checked />
+                <label class="form-check-label ms-2 d-flex align-items-center gap-2" for="star3">
+                  <span class="text-warning"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i></span>
+                  <span class="fw-semibold text-dark">3-star</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          </div>
+          <br />
+          <hr />
+          <div class="p-2 w-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h6 class="fw-bold m-0 text-dark">Amenities</h6>
+              <button type="button" id="amenToggle" class="collapse-toggle btn btn-link text-dark text-decoration-none p-0" data-bs-toggle="collapse" data-bs-target="#amenBody" aria-expanded="true" aria-controls="amenBody" title="Show / hide"><i class="bi bi-chevron-up"></i></button>
+            </div>
+            <div class="collapse show" id="amenBody">
+            <div class="d-flex flex-wrap gap-2">
+              <button class="btn rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 fw-medium bg-white border border-secondary text-dark text-nowrap" type="button">
+                <i class="bi bi-snow fs-5"></i> Air Conditioning
+              </button>
+              <button class="btn rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 fw-medium bg-white border border-secondary text-dark text-nowrap" type="button">
+                <i class="bi bi-wifi fs-5"></i> Wi-Fi
+              </button>
+              <button class="btn rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 fw-medium bg-white border border-secondary text-dark text-nowrap" type="button">
+                <i class="bi bi-fire fs-5"></i> BBQ Grill
+              </button>
+              <button class="btn rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 fw-medium bg-white border border-secondary text-dark text-nowrap" type="button">
+                <i class="bi bi-water fs-5"></i> Washing machine
+              </button>
+              <button class="btn rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 fw-medium bg-white border border-secondary text-dark text-nowrap" type="button">
+                <i class="bi bi-tv fs-5"></i> TV
+              </button>
+              <button class="btn rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 fw-medium bg-white border border-secondary text-dark text-nowrap" type="button">
+                <i class="bi bi-house-door fs-5"></i> Kitchen
+              </button>
+            </div>
+          </div>
+          </div>
+          <br />
+          <div class="p-2 w-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h6 class="fw-bold m-0 text-dark">Features</h6>
+              <button type="button" id="featToggle" class="collapse-toggle btn btn-link text-dark text-decoration-none p-0" data-bs-toggle="collapse" data-bs-target="#featBody" aria-expanded="true" aria-controls="featBody" title="Show / hide"><i class="bi bi-chevron-up"></i></button>
+            </div>
+            <div class="collapse show" id="featBody">
+            <div class="d-flex flex-wrap gap-2">
+              <button class="btn rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 fw-bold bg-white border border-secondary text-dark text-nowrap" type="button">
+                <i class="bi bi-cup-hot fs-5"></i> Breakfast Included
+              </button>
+              <button class="btn rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 fw-medium bg-white border border-secondary text-dark text-nowrap" type="button">
+                <i class="bi bi-water fs-5"></i> Pool
+              </button>
+              <button class="btn rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 fw-medium bg-white border border-secondary text-dark text-nowrap" type="button">
+                <i class="bi bi-droplet-half fs-5"></i> Hot Tub
+              </button>
+              <button class="btn rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 fw-medium bg-white border border-secondary text-dark text-nowrap" type="button">
+                <i class="bi bi-p-circle fs-5"></i> Free Parking
+              </button>
+              <button class="btn rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 fw-medium bg-white border border-secondary text-dark text-nowrap" type="button">
+                <i class="bi bi-activity fs-5"></i> Gym
+              </button>
+              <button class="btn rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 fw-medium bg-white border border-secondary text-dark text-nowrap" type="button">
+                <i class="bi bi-flower1 fs-5"></i> Wellness
+              </button>
+            </div>
+          </div>
+          </div>
+          <br />
+          <div class="p-2 w-100">
+            <div class="d-flex justify-content-between align-items-center">
+              <h6 class="fw-bold m-0 text-dark">Safety</h6>
+              <button type="button" id="safetyToggle" class="collapse-toggle btn btn-link text-dark text-decoration-none p-0" data-bs-toggle="collapse" data-bs-target="#safetyBody" aria-expanded="true" aria-controls="safetyBody" title="Show / hide"><i class="bi bi-chevron-up"></i></button>
+            </div>
+            <div class="collapse show" id="safetyBody">
+            <div class="d-flex flex-wrap gap-2 mt-3">
+              <button class="btn rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 fw-medium bg-white border border-secondary text-dark text-nowrap" type="button">
+                <i class="bi bi-shield-check fs-5"></i> Smoke Detector
+              </button>
+              <button class="btn rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 fw-medium bg-white border border-secondary text-dark text-nowrap" type="button">
+                <i class="bi bi-fire fs-5"></i> Fire Extinguisher
+              </button>
+              <button class="btn rounded-pill d-inline-flex align-items-center gap-2 px-3 py-2 fw-medium bg-white border border-secondary text-dark text-nowrap" type="button">
+                <i class="bi bi-plus-circle fs-5"></i> First Aid Kit
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+      <div class="col-12 col-lg-9" id="listingsCol">
+        <div class="container my-4">
+  <div class="d-flex justify-content-between align-items-end">
+
+    <div class="d-flex flex-column gap-2 align-items-start">
+      <h2 class="fw-bold m-0 fs-3"><span id="pageHeading">Explore stays</span> <span id="resultCount" class="fs-6 fw-normal text-muted"></span></h2>
+
+      <div class="dropdown" id="sortDropdownContainer">
+        <button class="btn btn-outline-secondary dropdown-toggle rounded-3 text-dark px-3 py-2 bg-white shadow-sm fw-semibold d-inline-flex justify-content-between align-items-center gap-2" style="min-width:230px" type="button" id="sortDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+          <span id="sortLabel">Sort by: Top Reviewed</span>
+        </button>
+        <ul class="dropdown-menu shadow rounded-3 p-1" style="min-width:230px" aria-labelledby="sortDropdownBtn">
+          <li><a class="dropdown-item rounded-2 active" href="#sort" data-sort="top">Sort by: Top Reviewed</a></li>
+          <li><a class="dropdown-item rounded-2" href="#sort" data-sort="price-asc">Price: Low to High</a></li>
+          <li><a class="dropdown-item rounded-2" href="#sort" data-sort="price-desc">Price: High to Low</a></li>
+          <li><a class="dropdown-item rounded-2" href="#sort" data-sort="popular">Most Popular</a></li>
+        </ul>
+      </div>
+      <select id="gridSortSelect" class="form-select rounded-pill w-auto d-none" aria-label="Sort grid view">
+        <option value="top">Sort by: Top Reviewed</option>
+        <option value="lowToHigh">Price: Low to High</option>
+        <option value="highToLow">Price: High to Low</option>
+      </select>
+    </div>
+
+    <div class="border rounded-pill p-1 d-inline-flex align-items-center bg-white shadow-sm" id="viewToggleContainer">
+
+      <button type="button" class="btn btn-light rounded-circle p-0 d-flex align-items-center justify-content-center shadow-sm" id="listViewBtn" style="width: 36px; height: 36px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+        </svg>
+      </button>
+
+      <button type="button" class="btn btn-link text-secondary text-decoration-none rounded-circle p-0 d-flex align-items-center justify-content-center" id="gridViewBtn" style="width: 36px; height: 36px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
+          <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z"/>
+        </svg>
+      </button>
+
+    </div>
+
+  </div>
+ </div>
+
+        <div id="gridView">
+      <div class="row hotels-row" id="gridRow"></div>
+        <div id="gridEmpty" class="d-none text-center py-5">
+          <p class="fs-5 fw-bold mb-1">No places match your filters</p>
+          <p class="text-muted small mb-0">Try a different type or price range.</p>
+        </div>
+        </div>
+
+        <div id="listEmpty" class="d-none text-center py-5">
+          <p class="fs-5 fw-bold mb-1">No places match your filters</p>
+          <p class="text-muted small mb-0">Try a different type or price range.</p>
+        </div>
+
+      </div>
+    </section>
+        <footer class="bg-dark text-white mt-5">
+      <div class="container-fluid px-5 py-4">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <h5 class="fw-bold">Giza<span class="text-warning">Stay</span></h5>
+
+            <p class="small">
+              We help you find and book the perfect stay from cozy guesthouses
+              to top hotels—with ease, trust, and the best deals.
+            </p>
+
+            <h6 class="text-primary">Download Our App</h6>
+
+            <div class="d-flex gap-2">
+              <a href="#" class="btn btn-secondary btn-sm">
+                <i class="bi bi-apple"></i>
+                App Store
+              </a>
+
+              <a href="#" class="btn btn-secondary btn-sm">
+                <i class="bi bi-google-play"></i>
+                Google Play
+              </a>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Explore</h6>
+
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Trending Destinations</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Summer Hotspots</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Winter Getaways</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Weekend Deals</a
+            >
+            <a href="#" class="d-block text-white text-decoration-none small"
+              >Family-Friendly Stays</a
+            >
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Property Types</h6>
+
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Hotels</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Apartments</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Villas</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Cabins</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Glamping</a
+            >
+            <a href="#" class="d-block text-white text-decoration-none small"
+              >Domes</a
+            >
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Support</h6>
+
+            <a
+              href="helpcen.html"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Help Centre</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >Live Chat Support</a
+            >
+            <a
+              href="#"
+              class="d-block text-white text-decoration-none small mb-2"
+              >FAQs</a
+            >
+            <a href="#" class="d-block text-white text-decoration-none small"
+              >Contact Us</a
+            >
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h6 class="text-primary">Get In Touch</h6>
+
+            <p class="small mb-2">+20 123 456 7890</p>
+            <p class="small">support@gizastay.com</p>
+
+            <div class="d-flex gap-3">
+              <a href="#" class="text-white">
+                <i class="bi bi-facebook"></i>
+              </a>
+
+              <a href="#" class="text-white">
+                <i class="bi bi-instagram"></i>
+              </a>
+
+              <a href="#" class="text-white">
+                <i class="bi bi-youtube"></i>
+              </a>
+
+              <a href="#" class="text-white">
+                <i class="bi bi-twitter"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-top border-secondary py-3">
+        <div class="container-fluid px-5">
+          <div
+            class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3"
+          >
+            <small> © 2025 GizaStay. All rights reserved. </small>
+
+            <div class="d-flex gap-2">
+              <span class="badge bg-light text-dark">VISA</span>
+              <span class="badge bg-light text-dark">AMEX</span>
+              <span class="badge bg-light text-dark">MC</span>
+              <span class="badge bg-light text-dark">Stripe</span>
+              <span class="badge bg-light text-dark">PayPal</span>
+              <span class="badge bg-light text-dark">G Pay</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <button id="favFloatBtn" type="button" class="btn btn-dark position-fixed top-50 end-0 translate-middle-y rounded-end-0 rounded-start-4 shadow-lg d-none align-items-center gap-2 px-3 py-3" data-bs-toggle="modal" data-bs-target="#favModal" style="z-index: 1040" title="Saved places">
+      <i class="bi bi-heart-fill text-danger fs-5"></i>
+      <span id="favCount" class="badge bg-danger">0</span>
+    </button>
+    <div class="modal fade" id="favModal" tabindex="-1" aria-labelledby="favModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="favModalLabel"><i class="bi bi-heart-fill text-danger"></i> Saved places (<span id="favModalCount">0</span>)</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="favList"></div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/hotels.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
