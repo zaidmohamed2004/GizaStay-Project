@@ -21,7 +21,6 @@ function setupSearch() {
   const value = getParam("destination");
   if (value && destination) destination.value = value;
 
-  // Decorative only: switches which pill looks selected, doesn't filter.
   document.querySelectorAll(".hero-type-pill").forEach((pill) => {
     pill.addEventListener("click", () => {
       document
@@ -133,9 +132,7 @@ function setupWeekendDeals() {
   const grid = document.getElementById("weekend-deals-grid");
   if (!grid) return;
   const hotels = (window.GIZASTAY_HOTELS || []).slice(4, 9);
-  grid.innerHTML = hotels
-    .map((h) => hotelCardHTML(h, { deal: true }))
-    .join("");
+  grid.innerHTML = hotels.map((h) => hotelCardHTML(h, { deal: true })).join("");
   bindHeartButtons(grid);
 }
 
@@ -171,7 +168,12 @@ function hotelById(id) {
 function setupTrendingDestinations() {
   const grid = document.getElementById("trending-destinations-grid");
   if (!grid) return;
-  const ids = ["villa-san-martino", "pyramids-view", "palm-grove", "coral-reef"];
+  const ids = [
+    "villa-san-martino",
+    "pyramids-view",
+    "palm-grove",
+    "coral-reef",
+  ];
   const hotels = ids.map(hotelById).filter(Boolean);
   grid.innerHTML = hotels
     .map(

@@ -329,7 +329,6 @@
       syncPrice();
     });
 
-    // Decorative sidebar controls (visual only)
     $$(".collapse-toggle").forEach(function (b) {
       b.addEventListener("click", function () {
         var ic = b.querySelector("i");

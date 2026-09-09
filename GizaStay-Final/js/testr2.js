@@ -1,31 +1,17 @@
-﻿const $ = (id) => document.getElementById(id);
+const $ = (id) => document.getElementById(id);
 const qa = (s) => Array.from(document.querySelectorAll(s));
 const modalOf = (el) => bootstrap.Modal.getOrCreateInstance(el);
 var esc = (s) =>
-  String(s ?? "").replace(
-    /[&<>"']/g,
-    (c) =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
-        c
-      ],
-  );
+  String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 function lsGet(k, fb) {
   try {
     const v = localStorage.getItem(k);
     if (v === null) return fb;
-    try {
-      return JSON.parse(v);
-    } catch (_) {
-      return v;
-    }
-  } catch (_) {
-    return fb;
-  }
+    try { return JSON.parse(v); } catch (_) { return v; }
+  } catch (_) { return fb; }
 }
 function lsSet(k, v) {
-  try {
-    localStorage.setItem(k, typeof v === "string" ? v : JSON.stringify(v));
-  } catch (_) {}
+  try { localStorage.setItem(k, typeof v === "string" ? v : JSON.stringify(v)); } catch (_) {}
 }
 function paintSidebar(target) {
   qa(".sidebar-btn").forEach((btn) => {
@@ -40,10 +26,7 @@ function showTab(id) {
   const el = $(id);
   if (el) el.classList.remove("d-none");
 }
-function gotoTab(contentId) {
-  showTab(contentId);
-  paintSidebar(contentId);
-}
+function gotoTab(contentId) { showTab(contentId); paintSidebar(contentId); }
 
 document.addEventListener("DOMContentLoaded", () => {
   const sidebarButtons = qa(".sidebar-btn");
@@ -52,16 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
   sidebarButtons.forEach((button) => {
     button.addEventListener("click", () => {
       paintSidebar(button.dataset.target);
-      tabContents.forEach((content) => {
-        content.classList.add("d-none");
-      });
-      const targetContent = document.getElementById(
-        button.getAttribute("data-target"),
-      );
-
-      if (targetContent) {
-        targetContent.classList.remove("d-none");
-      }
+      tabContents.forEach((content) => content.classList.add("d-none"));
+      const targetContent = document.getElementById(button.getAttribute("data-target"));
+      if (targetContent) targetContent.classList.remove("d-none");
     });
   });
 });
@@ -75,21 +51,13 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!emptyEl || !gridEl || !rowEl) return;
 
   if (startSearchBtn)
-    startSearchBtn.addEventListener("click", () => {
-      location.href = "searchgrid.html";
-    });
+    startSearchBtn.addEventListener("click", () => { location.href = "searchgrid.html"; });
 
   function getFavoriteIds() {
-    try {
-      return JSON.parse(localStorage.getItem("gizastay_favorites") || "[]");
-    } catch (_) {
-      return [];
-    }
+    try { return JSON.parse(localStorage.getItem("gizastay_favorites") || "[]"); } catch (_) { return []; }
   }
   function setFavoriteIds(ids) {
-    try {
-      localStorage.setItem("gizastay_favorites", JSON.stringify(ids));
-    } catch (_) {}
+    try { localStorage.setItem("gizastay_favorites", JSON.stringify(ids)); } catch (_) {}
   }
   function hotelCard(hotel) {
     return `
@@ -108,9 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function renderWishlist() {
     const ids = getFavoriteIds();
-    const hotels = (window.GIZASTAY_HOTELS || []).filter((h) =>
-      ids.includes(h.id),
-    );
+    const hotels = (window.GIZASTAY_HOTELS || []).filter((h) => ids.includes(h.id));
     if (!hotels.length) {
       emptyEl.classList.remove("d-none");
       gridEl.classList.add("d-none");
@@ -151,20 +117,14 @@ document.addEventListener("DOMContentLoaded", () => {
   let editingId = null;
 
   const HOTEL_IMGS = {
-    "via golden tulip hotel":
-      "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=300&q=80",
-    "via forest whisper cabin":
-      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=300&q=80",
-    "via blue horizon villa":
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=300&q=80",
-    default:
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=300&q=80",
+    "via golden tulip hotel": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=300&q=80",
+    "via forest whisper cabin": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=300&q=80",
+    "via blue horizon villa": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=300&q=80",
+    default: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=300&q=80",
   };
 
   function imgFor(property) {
-    const key = String(property || "")
-      .trim()
-      .toLowerCase();
+    const key = String(property || "").trim().toLowerCase();
     return HOTEL_IMGS[key] || HOTEL_IMGS["default"];
   }
   function labelFor(score) {
@@ -183,11 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function seedIfEmpty() {
-    try {
-      if (localStorage.getItem(STORAGE_KEY) !== null) return;
-    } catch (_) {
-      return;
-    }
+    try { if (localStorage.getItem(STORAGE_KEY) !== null) return; } catch (_) { return; }
     const seed = [
       {
         id: "seed-1",
@@ -197,11 +153,9 @@ document.addEventListener("DOMContentLoaded", () => {
         score: 3.0,
         status: "posted",
         liked: "The receptionist was a god guy.",
-        disliked:
-          "It doesn't have any daily cleaning or towel changing. It doesn't have any liquid soap; it was empty. The kitchen didn't have any dishwashing liquid.",
+        disliked: "It doesn't have any daily cleaning or towel changing. It doesn't have any liquid soap; it was empty. The kitchen didn't have any dishwashing liquid.",
         helpful: 2,
-        response:
-          "Hi Anna, we are very sorry for this feedback. Our property is a short-let house, not a hotel. Therefore, daily cleaning and towel changes are not foreseen in this type of short let. Probably, if you had kept this distinction in mind, you would not have judged your experience so harshly, and please forgive us for any misunderstanding. In any case, advice from our guests is always welcome. We thank you for choosing us!",
+        response: "Hi Anna, we are very sorry for this feedback. Our property is a short-let house, not a hotel. Therefore, daily cleaning and towel changes are not foreseen in this type of short let. Probably, if you had kept this distinction in mind, you would not have judged your experience so harshly, and please forgive us for any misunderstanding. In any case, advice from our guests is always welcome. We thank you for choosing us!",
       },
       {
         id: "seed-2",
@@ -211,8 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
         score: 3.0,
         status: "rejected",
         liked: "Nothing was good. It was my worth experience.",
-        disliked:
-          "It doesn't have any daily cleaning or towel changing. It doesn't have any liquid soap; it was empty. The kitchen didn't have any dishwashing liquid.",
+        disliked: "It doesn't have any daily cleaning or towel changing. It doesn't have any liquid soap; it was empty. The kitchen didn't have any dishwashing liquid.",
         helpful: 0,
         response: "",
       },
@@ -229,18 +182,14 @@ document.addEventListener("DOMContentLoaded", () => {
         response: "",
       },
     ];
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(seed));
-    } catch (_) {}
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(seed)); } catch (_) {}
   }
 
   const load = () => lsGet(STORAGE_KEY, []);
   const save = (v) => lsSet(STORAGE_KEY, v);
   function statusBadgeClass(status) {
-    if (status === "posted")
-      return "badge rounded-pill bg-success-subtle text-success border border-success-subtle";
-    if (status === "rejected")
-      return "badge rounded-pill bg-danger-subtle text-danger border border-danger-subtle";
+    if (status === "posted") return "badge rounded-pill bg-success-subtle text-success border border-success-subtle";
+    if (status === "rejected") return "badge rounded-pill bg-danger-subtle text-danger border border-danger-subtle";
     return "badge rounded-pill bg-warning-subtle text-warning-emphasis border border-warning-subtle";
   }
 
@@ -298,9 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function resetForm() {
     editingId = null;
-    const modalTitle = modalEl
-      ? modalEl.querySelector("#reviewModalLabel")
-      : null;
+    const modalTitle = modalEl ? modalEl.querySelector("#reviewModalLabel") : null;
     if (modalTitle) modalTitle.textContent = "Write a review";
     if (submitBtn) submitBtn.textContent = "Submit review";
     if (propInput) propInput.value = "";
@@ -317,13 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: "r-" + Date.now(),
       property: String(property).trim(),
       img: opts.img || imgFor(property),
-      date:
-        opts.date ||
-        new Date().toLocaleDateString("en-GB", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-        }),
+      date: opts.date || new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }),
       score: Number(score),
       status: opts.status || "pending",
       liked: String(liked || "").trim(),
@@ -334,9 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
     reviews.unshift(review);
     save(reviews);
     render();
-    document.dispatchEvent(
-      new CustomEvent("giza:review-added", { detail: review }),
-    );
+    document.dispatchEvent(new CustomEvent("giza:review-added", { detail: review }));
     return review.id;
   }
 
@@ -351,9 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
     r.disliked = String(disliked || "").trim();
     save(reviews);
     render();
-    document.dispatchEvent(
-      new CustomEvent("giza:review-updated", { detail: r }),
-    );
+    document.dispatchEvent(new CustomEvent("giza:review-updated", { detail: r }));
     return true;
   }
 
@@ -374,17 +311,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (scoreInput && scoreVal) {
-    scoreInput.addEventListener("input", () => {
-      scoreVal.textContent = Number(scoreInput.value).toFixed(1);
-    });
+    scoreInput.addEventListener("input", () => { scoreVal.textContent = Number(scoreInput.value).toFixed(1); });
   }
 
   if (writeBtn && modalEl) {
     const modal = modalOf(modalEl);
-    writeBtn.addEventListener("click", () => {
-      resetForm();
-      modal.show();
-    });
+    writeBtn.addEventListener("click", () => { resetForm(); modal.show(); });
     modalEl.addEventListener("hidden.bs.modal", resetForm);
 
     if (submitBtn) {
@@ -397,11 +329,8 @@ document.addEventListener("DOMContentLoaded", () => {
           if (errorEl) errorEl.classList.remove("d-none");
           return;
         }
-        if (editingId) {
-          updateReview(editingId, prop, score, liked, disliked);
-        } else {
-          addReview(prop, score, liked, disliked);
-        }
+        if (editingId) updateReview(editingId, prop, score, liked, disliked);
+        else addReview(prop, score, liked, disliked);
         modal.hide();
       });
     }
@@ -413,11 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = helpfulBtn.closest("[data-review-id]");
       const reviews = load();
       const r = reviews.find((x) => x.id === (card && card.dataset.reviewId));
-      if (r) {
-        r.helpful = (r.helpful || 0) + 1;
-        save(reviews);
-        render();
-      }
+      if (r) { r.helpful = (r.helpful || 0) + 1; save(reviews); render(); }
       return;
     }
     const editBtn = e.target.closest(".review-edit");
@@ -443,9 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
     openEdit,
     getReviews: () => load(),
     render,
-    openModal: () => {
-      if (modalEl) modalOf(modalEl).show();
-    },
+    openModal: () => { if (modalEl) modalOf(modalEl).show(); },
   };
 });
 document.addEventListener("DOMContentLoaded", () => {
@@ -503,16 +426,11 @@ document.addEventListener("DOMContentLoaded", () => {
   fileInput.addEventListener("change", () => {
     const file = fileInput.files && fileInput.files[0];
     if (!file) return;
-    if (!file.type.startsWith("image/")) {
-      fileInput.value = "";
-      return;
-    }
+    if (!file.type.startsWith("image/")) { fileInput.value = ""; return; }
     const reader = new FileReader();
     reader.onload = () => {
       applyAvatar(reader.result);
-      try {
-        localStorage.setItem(STORAGE_KEY, reader.result);
-      } catch (_) {}
+      try { localStorage.setItem(STORAGE_KEY, reader.result); } catch (_) {}
       fileInput.value = "";
     };
     reader.readAsDataURL(file);
@@ -529,15 +447,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!genderSelect || !genderIcon) return;
 
-  const ICONS = {
-    "": "bi bi-gender-ambiguous",
-    female: "bi bi-gender-female",
-    male: "bi bi-gender-male",
-  };
+  const ICONS = { "": "bi bi-gender-ambiguous", female: "bi bi-gender-female", male: "bi bi-gender-male" };
 
-  function syncGenderIcon() {
-    genderIcon.className = ICONS[genderSelect.value] || ICONS[""];
-  }
+  function syncGenderIcon() { genderIcon.className = ICONS[genderSelect.value] || ICONS[""]; }
 
   genderSelect.addEventListener("change", syncGenderIcon);
 
@@ -578,26 +490,10 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   function seedIfEmpty() {
-    try {
-      if (localStorage.getItem(STORAGE_KEY) !== null) return;
-    } catch (_) {
-      return;
-    }
+    try { if (localStorage.getItem(STORAGE_KEY) !== null) return; } catch (_) { return; }
     const seed = [
-      {
-        id: "seed-p1",
-        methodId: "visa",
-        label: "Visa .... 1316",
-        sub: "",
-        expiry: "06/2022",
-      },
-      {
-        id: "seed-p2",
-        methodId: "mastercard",
-        label: "MasterCard .... 2410",
-        sub: "",
-        expiry: "07/2022",
-      },
+      { id: "seed-p1", methodId: "visa", label: "Visa .... 1316", sub: "", expiry: "06/2022" },
+      { id: "seed-p2", methodId: "mastercard", label: "MasterCard .... 2410", sub: "", expiry: "07/2022" },
     ];
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(seed));
@@ -616,9 +512,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const load = () => lsGet(STORAGE_KEY, []);
   const save = (v) => lsSet(STORAGE_KEY, v);
-  function methodById(id) {
-    return METHODS.find((m) => m.id === id);
-  }
+  function methodById(id) { return METHODS.find((m) => m.id === id); }
 
   function brandMark(methodId) {
     if (methodId === "visa") {
@@ -647,8 +541,7 @@ document.addEventListener("DOMContentLoaded", () => {
     METHODS.forEach((m) => {
       const btn = document.createElement("button");
       btn.type = "button";
-      btn.className =
-        "btn btn-outline-secondary rounded-3 px-3 py-2 d-flex align-items-center gap-3 text-start";
+      btn.className = "btn btn-outline-secondary rounded-3 px-3 py-2 d-flex align-items-center gap-3 text-start";
       btn.dataset.methodId = m.id;
       btn.innerHTML = `
         <span class="badge bg-light text-dark border">${esc(m.badge)}</span>
@@ -703,10 +596,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!selected) return;
     let entry = null;
     if (selected.kind === "card") {
-      if (!validCard()) {
-        errorEl.classList.remove("d-none");
-        return;
-      }
+      if (!validCard()) { errorEl.classList.remove("d-none"); return; }
       const digits = numberInput.value.replace(/\D/g, "");
       entry = {
         id: "p-" + Date.now(),
@@ -717,27 +607,15 @@ document.addEventListener("DOMContentLoaded", () => {
       };
     } else {
       const email = emailInput.value.trim();
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        errorEl.classList.remove("d-none");
-        return;
-      }
-      entry = {
-        id: "p-" + Date.now(),
-        methodId: selected.id,
-        label: selected.name,
-        sub: email,
-      };
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errorEl.classList.remove("d-none"); return; }
+      entry = { id: "p-" + Date.now(), methodId: selected.id, label: selected.name, sub: email };
     }
     const list = load();
     list.unshift(entry);
     save(list);
-    try {
-      if (!localStorage.getItem(DEFAULT_KEY)) setDefaultId(entry.id);
-    } catch (_) {}
+    try { if (!localStorage.getItem(DEFAULT_KEY)) setDefaultId(entry.id); } catch (_) {}
     renderSaved();
-    document.dispatchEvent(
-      new CustomEvent("giza:payment-added", { detail: entry }),
-    );
+    document.dispatchEvent(new CustomEvent("giza:payment-added", { detail: entry }));
     modalOf(modalEl).hide();
   }
 
@@ -751,11 +629,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const div = document.createElement("div");
       div.className = "d-flex align-items-center gap-3 py-3 border-bottom";
       div.dataset.paymentId = p.id;
-      const subLine = p.expiry
-        ? `Expiration: ${esc(p.expiry)}`
-        : p.sub
-          ? esc(p.sub)
-          : "";
+      const subLine = p.expiry ? `Expiration: ${esc(p.expiry)}` : p.sub ? esc(p.sub) : "";
       div.innerHTML = `
         ${brandMark(p.methodId)}
         <div style="min-width:0;">
@@ -790,9 +664,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   if (cvcInput) {
-    cvcInput.addEventListener("input", () => {
-      cvcInput.value = cvcInput.value.replace(/\D/g, "").slice(0, 4);
-    });
+    cvcInput.addEventListener("input", () => { cvcInput.value = cvcInput.value.replace(/\D/g, "").slice(0, 4); });
   }
 
   typeStep.addEventListener("click", (e) => {
@@ -803,10 +675,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (saveBtn) saveBtn.addEventListener("click", handleSave);
 
   const modal = modalOf(modalEl);
-  openBtn.addEventListener("click", () => {
-    resetModal();
-    modal.show();
-  });
+  openBtn.addEventListener("click", () => { resetModal(); modal.show(); });
   modalEl.addEventListener("hidden.bs.modal", resetModal);
 
   if (savedList) {
@@ -814,10 +683,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const setBtn = e.target.closest(".payment-set-default");
       if (setBtn) {
         const row = setBtn.closest("[data-payment-id]");
-        if (row) {
-          setDefaultId(row.dataset.paymentId);
-          renderSaved();
-        }
+        if (row) { setDefaultId(row.dataset.paymentId); renderSaved(); }
         return;
       }
       const del = e.target.closest(".payment-delete");
@@ -828,11 +694,8 @@ document.addEventListener("DOMContentLoaded", () => {
       save(remaining);
       try {
         if (localStorage.getItem(DEFAULT_KEY) === row.dataset.paymentId) {
-          if (remaining.length) {
-            localStorage.setItem(DEFAULT_KEY, remaining[0].id);
-          } else {
-            localStorage.removeItem(DEFAULT_KEY);
-          }
+          if (remaining.length) localStorage.setItem(DEFAULT_KEY, remaining[0].id);
+          else localStorage.removeItem(DEFAULT_KEY);
         }
       } catch (_) {}
       renderSaved();
@@ -856,11 +719,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!birthdayInput || !iconWrap) return;
 
   iconWrap.addEventListener("click", () => {
-    if (typeof birthdayInput.showPicker === "function") {
-      birthdayInput.showPicker();
-    } else {
-      birthdayInput.focus();
-    }
+    if (typeof birthdayInput.showPicker === "function") birthdayInput.showPicker();
+    else birthdayInput.focus();
   });
 });
 document.addEventListener("DOMContentLoaded", () => {
@@ -898,10 +758,8 @@ document.addEventListener("DOMContentLoaded", () => {
       rooms: "15",
       nights: "5",
       bedsLine: "2 guests · Studio · 1 bed · 1.5 baths",
-      about:
-        "Welcome to my fully refurbished 17 m² studio, ideally located in Versailles, only a 10-minute walk to the Palace of Versailles and a 5-minute walk to the Rive Gauche train station.",
-      mapEmbed:
-        "https://www.openstreetmap.org/export/embed.html?bbox=2.1600%2C41.3600%2C2.2300%2C41.4000&layer=mapnik&marker=41.3800%2C2.1950",
+      about: "Welcome to my fully refurbished 17 m² studio, ideally located in Versailles, only a 10-minute walk to the Palace of Versailles and a 5-minute walk to the Rive Gauche train station.",
+      mapEmbed: "https://www.openstreetmap.org/export/embed.html?bbox=2.1600%2C41.3600%2C2.2300%2C41.4000&layer=mapnik&marker=41.3800%2C2.1950",
       priceRows: [
         { label: "1 unit", value: "€ 168.55" },
         { label: "10% VAT", value: "€ 16.85" },
@@ -949,10 +807,8 @@ document.addEventListener("DOMContentLoaded", () => {
       rooms: "8",
       nights: "5",
       bedsLine: "4 guests · Apartment · 2 beds · 2 baths",
-      about:
-        "Bright seaside apartment with a large terrace overlooking the marina, a 5-minute walk to the beach and close to local restaurants.",
-      mapEmbed:
-        "https://www.openstreetmap.org/export/embed.html?bbox=2.1600%2C41.3600%2C2.2300%2C41.4000&layer=mapnik&marker=41.3750%2C2.1900",
+      about: "Bright seaside apartment with a large terrace overlooking the marina, a 5-minute walk to the beach and close to local restaurants.",
+      mapEmbed: "https://www.openstreetmap.org/export/embed.html?bbox=2.1600%2C41.3600%2C2.2300%2C41.4000&layer=mapnik&marker=41.3750%2C2.1900",
       priceRows: [
         { label: "1 unit", value: "€ 210.00" },
         { label: "10% VAT", value: "€ 21.00" },
@@ -993,10 +849,8 @@ document.addEventListener("DOMContentLoaded", () => {
       rooms: "4",
       nights: "4",
       bedsLine: "2 guests · Suite · 1 bed · 1 bath",
-      about:
-        "Elegant suite in the heart of the Old Town, steps away from the Astronomical Clock and Charles Bridge.",
-      mapEmbed:
-        "https://www.openstreetmap.org/export/embed.html?bbox=14.4000%2C50.0700%2C14.4500%2C50.0950&layer=mapnik&marker=50.0875%2C14.4213",
+      about: "Elegant suite in the heart of the Old Town, steps away from the Astronomical Clock and Charles Bridge.",
+      mapEmbed: "https://www.openstreetmap.org/export/embed.html?bbox=14.4000%2C50.0700%2C14.4500%2C50.0950&layer=mapnik&marker=50.0875%2C14.4213",
       priceRows: [
         { label: "1 unit", value: "€ 140.00" },
         { label: "10% VAT", value: "€ 14.00" },
@@ -1035,10 +889,8 @@ document.addEventListener("DOMContentLoaded", () => {
       rooms: "6",
       nights: "4",
       bedsLine: "3 guests · House · 2 beds · 1.5 baths",
-      about:
-        "Cozy lake house with a private garden and direct lake access, ideal for a quiet family getaway.",
-      mapEmbed:
-        "https://www.openstreetmap.org/export/embed.html?bbox=13.0500%2C52.5400%2C13.1200%2C52.5750&layer=mapnik&marker=52.5600%2C13.0900",
+      about: "Cozy lake house with a private garden and direct lake access, ideal for a quiet family getaway.",
+      mapEmbed: "https://www.openstreetmap.org/export/embed.html?bbox=13.0500%2C52.5400%2C13.1200%2C52.5750&layer=mapnik&marker=52.5600%2C13.0900",
       priceRows: [
         { label: "1 unit", value: "€ 120.00" },
         { label: "10% VAT", value: "€ 12.00" },
@@ -1074,12 +926,9 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   function bookingBadge(status) {
-    if (status === "confirmed")
-      return "badge rounded-pill bg-success-subtle text-success border border-success-subtle";
-    if (status === "pending")
-      return "badge rounded-pill bg-warning-subtle text-warning-emphasis border border-warning-subtle";
-    if (status === "completed")
-      return "badge rounded-pill bg-primary-subtle text-primary border border-primary-subtle";
+    if (status === "confirmed") return "badge rounded-pill bg-success-subtle text-success border border-success-subtle";
+    if (status === "pending") return "badge rounded-pill bg-warning-subtle text-warning-emphasis border border-warning-subtle";
+    if (status === "completed") return "badge rounded-pill bg-primary-subtle text-primary border border-primary-subtle";
     return "badge rounded-pill bg-danger-subtle text-danger border border-danger-subtle";
   }
   function bookingLabel(status) {
@@ -1111,25 +960,18 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.classList.toggle("fw-semibold", isActive);
       btn.classList.toggle("border-primary", isActive);
       btn.classList.toggle("text-secondary", !isActive);
-      if (isActive) {
-        btn.style.removeProperty("border-color");
-      } else {
-        btn.style.setProperty("border-color", "transparent", "important");
-      }
+      if (isActive) btn.style.removeProperty("border-color");
+      else btn.style.setProperty("border-color", "transparent", "important");
     });
   }
 
   function renderTrips() {
     showListView();
-    const trips = (window.GizaTripsData || []).filter(
-      (t) => currentFilter === "all" || t.tripStatus === currentFilter,
-    );
+    const trips = (window.GizaTripsData || []).filter((t) => currentFilter === "all" || t.tripStatus === currentFilter);
     const titleEl = $("trips-title");
     if (titleEl) titleEl.textContent = FILTER_TITLES[currentFilter] || "Trips";
-    if (subtitleEl)
-      subtitleEl.textContent = FILTER_SUBTITLES[currentFilter] || "";
-    if (countBadge)
-      countBadge.textContent = `${trips.length} trip${trips.length === 1 ? "" : "s"}`;
+    if (subtitleEl) subtitleEl.textContent = FILTER_SUBTITLES[currentFilter] || "";
+    if (countBadge) countBadge.textContent = `${trips.length} trip${trips.length === 1 ? "" : "s"}`;
     if (!listEl) return;
     listEl.innerHTML = "";
     if (trips.length === 0) {
@@ -1187,8 +1029,7 @@ document.addEventListener("DOMContentLoaded", () => {
       </span>`,
       )
       .join("");
-    const canCancel =
-      t.bookingStatus === "confirmed" || t.bookingStatus === "pending";
+    const canCancel = t.bookingStatus === "confirmed" || t.bookingStatus === "pending";
     body.innerHTML = `
       <div class="border rounded-3 p-3 mb-3">
         <div class="d-flex gap-3 flex-wrap">
@@ -1266,15 +1107,11 @@ document.addEventListener("DOMContentLoaded", () => {
         t.bookingStatus = "canceled";
         t.tripStatus = "canceled";
         renderTripDetails(t.id);
-        document.dispatchEvent(
-          new CustomEvent("giza:trip-canceled", { detail: { id: t.id } }),
-        );
+        document.dispatchEvent(new CustomEvent("giza:trip-canceled", { detail: { id: t.id } }));
       });
     }
     const invoiceBtn = $("download-invoice-btn");
-    if (invoiceBtn) {
-      invoiceBtn.addEventListener("click", () => downloadInvoice(t));
-    }
+    if (invoiceBtn) invoiceBtn.addEventListener("click", () => downloadInvoice(t));
   }
 
   function downloadInvoice(t) {
@@ -1299,36 +1136,22 @@ document.addEventListener("DOMContentLoaded", () => {
     a.download = `Invoice-${String(t.bookingId).replace(/\s+/g, "")}.txt`;
     document.body.appendChild(a);
     a.click();
-    setTimeout(() => {
-      URL.revokeObjectURL(a.href);
-      a.remove();
-    }, 500);
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
   }
 
-  function openTripsTab() {
-    gotoTab("trips-content");
-  }
+  function openTripsTab() { gotoTab("trips-content"); }
 
-  function gotoReviewsTab() {
-    gotoTab("reviews-content");
-  }
+  function gotoReviewsTab() { gotoTab("reviews-content"); }
 
   function stripVia(name) {
-    return String(name || "")
-      .replace(/^via\s+/i, "")
-      .trim()
-      .toLowerCase();
+    return String(name || "").replace(/^via\s+/i, "").trim().toLowerCase();
   }
 
   function findTripReview(tripName) {
     try {
       const reviews = JSON.parse(localStorage.getItem("giza_reviews_v2")) || [];
-      return (
-        reviews.find((r) => stripVia(r.property) === stripVia(tripName)) || null
-      );
-    } catch (_) {
-      return null;
-    }
+      return reviews.find((r) => stripVia(r.property) === stripVia(tripName)) || null;
+    } catch (_) { return null; }
   }
 
   function renderTripReviewBox(t) {
@@ -1371,9 +1194,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const scoreInput = $("tripReviewScore");
     const scoreVal = $("tripReviewScoreVal");
     if (scoreInput && scoreVal) {
-      scoreInput.addEventListener("input", () => {
-        scoreVal.textContent = Number(scoreInput.value).toFixed(1);
-      });
+      scoreInput.addEventListener("input", () => { scoreVal.textContent = Number(scoreInput.value).toFixed(1); });
     }
     $("tripReviewSubmit").addEventListener("click", () => {
       const liked = $("tripReviewLiked").value.trim();
@@ -1385,9 +1206,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
       if (window.GizaReviews) {
-        window.GizaReviews.addReview("Via " + t.name, score, liked, disliked, {
-          img: t.img,
-        });
+        window.GizaReviews.addReview("Via " + t.name, score, liked, disliked, { img: t.img });
       }
       renderTripReviewBox(t);
       const ok = document.createElement("p");
@@ -1397,9 +1216,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function gotoWishlistTab() {
-    gotoTab("wishlist-content");
-  }
+  function gotoWishlistTab() { gotoTab("wishlist-content"); }
 
   function setExpanded(expanded) {
     submenu.classList.toggle("d-none", !expanded);
@@ -1430,8 +1247,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (row) {
           renderTripDetails(row.dataset.tripId);
           const section = $("trip-review-section");
-          if (section)
-            section.scrollIntoView({ behavior: "smooth", block: "start" });
+          if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
         }
         return;
       }
@@ -1451,10 +1267,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderTrips();
 
   window.GizaTrips = {
-    setFilter: (f) => {
-      currentFilter = f;
-      renderTrips();
-    },
+    setFilter: (f) => { currentFilter = f; renderTrips(); },
     getFilter: () => currentFilter,
     openDetails: renderTripDetails,
     getCurrent: () => currentTripId,
@@ -1470,14 +1283,8 @@ document.addEventListener("DOMContentLoaded", () => {
       recsToggle.checked = saved === null ? true : saved === "1";
     } catch (_) {}
     recsToggle.addEventListener("change", () => {
-      try {
-        localStorage.setItem(RECS_KEY, recsToggle.checked ? "1" : "0");
-      } catch (_) {}
-      document.dispatchEvent(
-        new CustomEvent("giza:recommendations-changed", {
-          detail: { enabled: recsToggle.checked },
-        }),
-      );
+      try { localStorage.setItem(RECS_KEY, recsToggle.checked ? "1" : "0"); } catch (_) {}
+      document.dispatchEvent(new CustomEvent("giza:recommendations-changed", { detail: { enabled: recsToggle.checked } }));
     });
   }
   const delBtn = $("delete-account-btn");

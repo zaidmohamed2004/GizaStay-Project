@@ -143,3 +143,54 @@ button:hover {
   font-size: 14px;
   line-height: 1.6;
 }
+
+/* Pure-HTML topic accordion (no JS) */
+.help-topic {
+  align-self: start;
+}
+.help-topic[open] {
+  grid-column: 1 / -1;
+}
+.help-topic > summary.help-item {
+  cursor: pointer;
+  list-style: none;
+}
+.help-topic > summary.help-item::-webkit-details-marker {
+  display: none;
+}
+.help-topic[open] > summary.help-item {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.help-topic > summary .arrow {
+  transition: transform 0.3s;
+}
+.help-topic[open] > summary .arrow {
+  transform: rotate(90deg);
+}
+.help-topic-body {
+  border: 1px solid #e0e0e0;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 14px 16px 4px;
+}
+.help-topic-body .help-faq:last-child {
+  margin-bottom: 10px;
+}
+
+/* FAQ item is a <details> now */
+.help-faq > summary.help-faq-q {
+  list-style: none;
+}
+.help-faq > summary.help-faq-q::-webkit-details-marker {
+  display: none;
+}
+.help-faq .icon-open {
+  display: none;
+}
+.help-faq[open] .icon-closed {
+  display: none;
+}
+.help-faq[open] .icon-open {
+  display: inline;
+}

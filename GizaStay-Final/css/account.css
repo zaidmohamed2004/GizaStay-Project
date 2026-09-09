@@ -49,3 +49,42 @@
   box-shadow: 5px 5px 10px rgb(0, 89, 255);
   transition: 0.3s;
 }
+
+/* Pure-HTML article accordion (no JS) */
+.help-article {
+  align-self: start;
+  padding: 0;
+}
+.help-article[open] {
+  grid-column: 1 / -1;
+}
+.help-article > summary.help-article-q {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  cursor: pointer;
+  list-style: none;
+  color: #1a1a2e;
+}
+.help-article > summary.help-article-q::-webkit-details-marker {
+  display: none;
+}
+.help-article > summary .arrow {
+  margin-left: auto;
+  transition: transform 0.3s;
+}
+.help-article[open] > summary .arrow {
+  transform: rotate(90deg);
+}
+.help-article .help-answer {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  border-radius: 0;
+  margin: 0;
+  padding: 14px 16px;
+  background: #fafbff;
+  color: #444;
+  font-size: 14px;
+  line-height: 1.6;
+}
