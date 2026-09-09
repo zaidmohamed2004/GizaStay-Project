@@ -1,7 +1,3 @@
-/* Layout and generic sections keep the teammate design.
-   Hotel-specific data (title, location, gallery, price, rating, amenities,
-   similar stays) is bound from the shared js/hotels.js dataset by ?id. */
-
 var STAY = (function () {
   var id = new URLSearchParams(location.search).get('id');
   var list = window.GIZASTAY_HOTELS || [];
@@ -167,7 +163,6 @@ tabs.forEach(function (t) {
   });
 });
 
-/* Favorite - shared gizastay_favorites */
 (function () {
   var favBtn = document.getElementById('favBtn');
   if (!favBtn || !STAY) return;
